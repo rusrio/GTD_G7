@@ -6,11 +6,12 @@ import java.util.Locale;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.capgemini.model.User;
+import com.capgemini.modelo.User;
 
 //vamos a anotarla como un contrlador
 @Controller
@@ -37,7 +38,8 @@ public class HomeController {
 	}
 
 //	especificamos a que tipo de peticiones HTTP responde, se podria utilizar getmapping
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+//	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@GetMapping("/")
 	public String home(Locale locale, Model model) {
 
 //		vamos hacer una home que nos devuelva la fecha

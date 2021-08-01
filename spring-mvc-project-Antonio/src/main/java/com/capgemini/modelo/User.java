@@ -1,4 +1,4 @@
-package com.capgemini.model;
+package com.capgemini.modelo;
 
 public class User {
 	
