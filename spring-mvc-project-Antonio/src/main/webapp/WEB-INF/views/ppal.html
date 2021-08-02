@@ -1,0 +1,28 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Usuarios</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" media="all"
+	href="../../../css/gtvg.css" th:href="@{/css/gtvg.css}" />
+</head>
+
+<body>
+
+	<h1>User list</h1>
+
+	<table>
+		<tr>
+			<th>login</th>
+			<th>email</th>
+			<th>status</th>
+		</tr>
+		<tr th:each="u : ${usuario}">
+			<td th:text="${u.login}"></td>
+			<td th:text="${u.email}"></td>
+			<td th:text="${u.status}"></td>
+		</tr>
+	</table>
+</body>
+
+</html>
