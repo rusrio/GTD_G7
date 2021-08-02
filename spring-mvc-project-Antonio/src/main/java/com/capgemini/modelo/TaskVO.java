@@ -3,6 +3,7 @@ package com.capgemini.modelo;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +18,9 @@ public class TaskVO {
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@Column(columnDefinition = "BIGINT")
 	private int idtask;
+	@Column(nullable = false)
 	private String title;
 	private String comments;
 	private LocalDate created;
