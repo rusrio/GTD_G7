@@ -10,7 +10,7 @@ import com.capgemini.persistence.dao.UserDAO;
 
 public class UserDAOImpl implements UserDAO {
 	
-	EntityManager em;
+	private EntityManager em;
 	
 	public UserDAOImpl (EntityManager em) {
 		this.em=em;

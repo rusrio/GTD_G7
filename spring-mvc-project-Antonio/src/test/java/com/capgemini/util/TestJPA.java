@@ -1,7 +1,8 @@
 package com.capgemini.util;
 
-import static org.junit.Assert.assertNull;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -9,10 +10,10 @@ import java.util.List;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 
 import com.capgemini.bussines.servicio.ServicioCategory;
 import com.capgemini.bussines.servicio.ServicioTask;
@@ -24,6 +25,8 @@ import com.capgemini.modelo.CategoryVO;
 import com.capgemini.modelo.TaskVO;
 import com.capgemini.modelo.UserVO;
 import com.capgemini.modelo.UserVO.UserStatus;
+
+
 
 @TestMethodOrder(OrderAnnotation.class)
 @DisplayName("Test task manager GTD_G7")
@@ -43,13 +46,14 @@ class TestJPA {
 
 	@Test
 	@Order(1)
+	@DisplayName("Insertar usuarios")
 	void testInsertarUsuarios() {		
 		System.out.println("[TEST 1]");
 
 //		insertar unos usuarios
-		su.insertar(new UserVO("paco@paco.mail", true, "paquito-priulero", "pwd-segura", UserStatus.ENABLED,
+		su.insertar(new UserVO("sr_capgemini@capgemini.com", true, "master_of_the_universe", "12345", UserStatus.ENABLED,
 				new ArrayList<CategoryVO>(), new ArrayList<TaskVO>()));
-		su.insertar(new UserVO("paco@paco.mail", true, "paquito-priulero-2", "pwd-segura", UserStatus.ENABLED,
+		su.insertar(new UserVO("adam_responde@capgemini.com", false, "centralita123", "adam_the_best", UserStatus.DISABLED,
 				new ArrayList<CategoryVO>(), new ArrayList<TaskVO>()));
 		
 		assertEquals(2, su.findAll().size());
@@ -58,6 +62,7 @@ class TestJPA {
 
 	@Test
 	@Order(2)
+	@DisplayName("Insertar categorias")
 	void testInsertarCategorias() {
 		System.out.println("[TEST 2]");
 
@@ -71,6 +76,7 @@ class TestJPA {
 
 	@Test
 	@Order(3)
+	@DisplayName("Modificar categorias")
 	void testModificarCategorias() {
 		System.out.println("[TEST 3]");
 
@@ -103,6 +109,7 @@ class TestJPA {
 
 	@Test
 	@Order(4)
+	@DisplayName("Eliminar categorias")
 	void testEliminarCategoria() {
 		System.out.println("[TEST 4]");
 
@@ -124,6 +131,7 @@ class TestJPA {
 
 	@Test
 	@Order(5)
+	@DisplayName("Buscamos todos los usuarios")
 	void testMostarTodosLosUsuarios() {
 		System.out.println("[TEST 5]");
 		
@@ -142,9 +150,11 @@ class TestJPA {
 	
 	@Test
 	@Order(6)
+	@DisplayName("Insertar tareas")
 	void testInsertarTareas() {
 		System.out.println("[TEST 6]");		
-		assertEquals(1, st.insertar(new TaskVO("imprimir los documentos", "lleva mucho tiempo", LocalDate.of(2021, 01, 01), LocalDate.of(2021, 01, 01), LocalDate.of(2021, 01, 01), su.findById(1), sc.findById(1))));
+		assertEquals(1, st.insertar(new TaskVO("imprimir los documentos", "lleva mucho tiempo", LocalDate.now(), null, null, su.findById(1), sc.findById(1))));
+		assertEquals(1, st.insertar(new TaskVO("imprimir los documentos", "lleva mucho tiempo", LocalDate.of(2020, 01, 01), null, null, su.findById(1), sc.findById(1))));
 		//imprimimos las task del usuario 1
 		System.out.println("Task del user 1");
 		List<TaskVO> tasks_user = su.findById(1).getTareas();
@@ -161,10 +171,11 @@ class TestJPA {
 	
 	@Test
 	@Order(7)
+	@DisplayName("Buscar usuarios por su login")
 	void testBuscarUserPorLogin() {
 		System.out.println("[TEST 7]");
-		assertEquals("paquito-priulero", su.findByLogin("paquito-priulero").getLogin());
-		System.out.println(su.findByLogin("paquito-priulero").getEmail());
+		assertEquals("master_of_the_universe", su.findByLogin("master_of_the_universe").getLogin());
+		System.out.println(su.findByLogin("master_of_the_universe").getEmail());
 	}	
 	
 

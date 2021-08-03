@@ -26,9 +26,9 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String inicio(Model modelo) {
 		
-		su.insertar(new UserVO("paco@paco.mail", true, "paquito-priulero", "pwd-segura", UserStatus.ENABLED,
+		su.insertar(new UserVO("sr_capgemini@capgemini.com", true, "master_of_the_universe", "12345", UserStatus.ENABLED,
 				new ArrayList<CategoryVO>(), new ArrayList<TaskVO>()));
-		su.insertar(new UserVO("paco@paco.mail", true, "paquito-priulero-2", "pwd-segura", UserStatus.ENABLED,
+		su.insertar(new UserVO("adam_responde@capgemini.com", false, "centralita123", "adam_the_best", UserStatus.DISABLED,
 				new ArrayList<CategoryVO>(), new ArrayList<TaskVO>()));
 		
 		modelo.addAttribute("usuario", su.findAll());

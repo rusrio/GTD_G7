@@ -12,7 +12,7 @@ import com.capgemini.persistence.dao.TaskDAO;
 
 public class TaskDAOImpl implements TaskDAO {
 
-	EntityManager em;
+	private EntityManager em;
 
 	public TaskDAOImpl(EntityManager em) {
 		this.em = em;

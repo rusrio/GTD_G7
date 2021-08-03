@@ -11,7 +11,7 @@ import com.capgemini.persistence.dao.CategoryDAO;
 
 public class CategoryDAOImpl implements CategoryDAO {
 
-	EntityManager em;
+	private EntityManager em;
 
 	public CategoryDAOImpl(EntityManager em) {
 		this.em = em;
