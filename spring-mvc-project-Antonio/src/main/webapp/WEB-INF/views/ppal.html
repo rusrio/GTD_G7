@@ -3,8 +3,7 @@
 <head>
 <title>Usuarios</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" type="text/css" media="all"
-	href="../../../css/gtvg.css" th:href="@{/css/gtvg.css}" />
+
 </head>
 
 <body>
@@ -23,6 +22,10 @@
 			<td th:text="${u.status}"></td>
 		</tr>
 	</table>
+	
+		<div class="">
+		<a id="home" th:href="@{/}"> Login</a>
+	</div>
 </body>
 
 </html>
