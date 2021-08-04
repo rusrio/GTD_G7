@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -24,7 +25,7 @@ public class HomeController {
 	// otro usuario
 
 	public void inicio() {
-		
+
 		if (su.findById(1) == null) {
 			su.insertar(new UserVO("root@capgemini.com", true, "root", "root", UserStatus.ENABLED,
 					new ArrayList<CategoryVO>(), new ArrayList<TaskVO>()));
@@ -62,40 +63,61 @@ public class HomeController {
 
 		if (user.getPassword().equals(pwd)) {// comprobamos que, exisitendo el login, el pwd es correcto
 			if (user.isAdmin()) {// si es admin, vamos a su pagina
-				return "redirect:ppal";
+				return "redirect:admin";
 			} else {// si es un user normal, a la que le corresponda
-				return "user";
+				if (user.getStatus().equals(UserStatus.ENABLED)) {//si esta habilidado puede entrar
+					return "user";
+				} else {//si no, no puede
+					return "login";
+				}
 			}
 		} else {// si la pwd no es correcta, volvemos a pedir que ingrese credenciales
 			return "login";
 		}
 	}
 
-	@GetMapping("/ppal")
-	public String ppal(Model modelo) {
+	@GetMapping("/admin")
+	public String admin(Model modelo) {
 
 		modelo.addAttribute("usuario", su.findAll());
 
-		return "ppal";
+		return "admin";
 
 	}
 
 	@GetMapping("/deleteuser")
 	public String deleteUser(@RequestParam int iduser) {
 		su.eliminar(su.findById(iduser));
-		return "redirect:ppal";
+		return "redirect:admin";
 	}
-	
+
 	@GetMapping("/activeuser")
 	public String activeUser(@RequestParam int iduser) {
-		UserVO user=su.findById(iduser);
-		if(user.getStatus()==UserStatus.DISABLED) {
+		UserVO user = su.findById(iduser);
+		if (user.getStatus() == UserStatus.DISABLED) {
 			user.setStatus(UserStatus.ENABLED);
-		}else {
+		} else {
 			user.setStatus(UserStatus.DISABLED);
 		}
+
+		return "redirect:admin";
+	}
+	
+	@GetMapping("/insertauser")
+	public String insertaUser(Model modelo) {
+		modelo.addAttribute("usuario",new UserVO());
+		return "registro";
+	}
+	
+	@PostMapping("/submituser")
+	public String submiUser(@ModelAttribute UserVO user,Model modelo) {
+		user.setAdmin(false);
+		user.setStatus(UserStatus.ENABLED);
+		user.setCategorias(new ArrayList<CategoryVO>());
+		user.setTareas(new ArrayList<TaskVO>());
+		su.insertar(user);
+		return "redirect:/";
 		
-		return "redirect:ppal";
 	}
 
 }

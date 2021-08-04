@@ -8,11 +8,28 @@
 
 <body>
 
-	<h1>SOY UN ADMIN</h1>
-	<div class="">
-		<a id="home" th:href="@{/}"> Login</a>
-	</div>
+	<h1>User list</h1>
 
+	<table>
+		<tr>
+			<th>login</th>
+			<th>email</th>
+			<th>status</th>
+			<th colspan="2">Acción</th>
+		</tr>
+		<tr th:each="u : ${usuario}">
+			<td th:text="${u.login}"></td>
+			<td th:text="${u.email}"></td>
+			<td th:text="${u.status}"></td>
+			<td><a th:href="@{deleteuser(iduser=${u.iduser})}">Eliminar</a></td>
+			<td><a th:href="@{activeuser(iduser=${u.iduser})}">Activar / Bloquear</a></td>
+		</tr>
+	</table>
+	<br>
+
+	<div class="">
+		<a id="home" th:href="@{/}"> Logout</a>
+	</div>
 </body>
 
 </html>
