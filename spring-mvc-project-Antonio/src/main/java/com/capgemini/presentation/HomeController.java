@@ -1,6 +1,7 @@
 package com.capgemini.presentation;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -65,9 +66,9 @@ public class HomeController {
 			if (user.isAdmin()) {// si es admin, vamos a su pagina
 				return "redirect:admin";
 			} else {// si es un user normal, a la que le corresponda
-				if (user.getStatus().equals(UserStatus.ENABLED)) {//si esta habilidado puede entrar
+				if (user.getStatus().equals(UserStatus.ENABLED)) {// si esta habilidado puede entrar
 					return "user";
-				} else {//si no, no puede
+				} else {// si no, no puede
 					return "login";
 				}
 			}
@@ -79,7 +80,9 @@ public class HomeController {
 	@GetMapping("/admin")
 	public String admin(Model modelo) {
 
-		modelo.addAttribute("usuario", su.findAll());
+		List<UserVO> usuarios = su.findAll();
+		usuarios.remove(su.findByLogin("root"));
+		modelo.addAttribute("usuario", usuarios);
 
 		return "admin";
 
@@ -102,22 +105,38 @@ public class HomeController {
 
 		return "redirect:admin";
 	}
-	
+
 	@GetMapping("/insertauser")
 	public String insertaUser(Model modelo) {
-		modelo.addAttribute("usuario",new UserVO());
+		modelo.addAttribute("usuario", new UserVO());
 		return "registro";
 	}
-	
+
 	@PostMapping("/submituser")
-	public String submiUser(@ModelAttribute UserVO user,Model modelo) {
+	public String submitUser(@ModelAttribute UserVO user, Model modelo) {
 		user.setAdmin(false);
 		user.setStatus(UserStatus.ENABLED);
 		user.setCategorias(new ArrayList<CategoryVO>());
 		user.setTareas(new ArrayList<TaskVO>());
 		su.insertar(user);
-		return "redirect:/";
 		
+		return "redirect:/";
+
+	}
+	
+	@GetMapping("/modificadatos")
+	public String modificaDatos(@RequestParam int iduser, Model modelo) {
+		modelo.addAttribute("user", su.findById(iduser));
+		return "modificadatos";
+	}
+	
+	@PostMapping("/modificauser")
+	public String modificaUser(@ModelAttribute UserVO user, Model modelo) {
+		
+		su.modificar(user);
+		
+		return "redirect:/";
+
 	}
 
 }
