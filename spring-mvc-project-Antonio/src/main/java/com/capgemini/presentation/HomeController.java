@@ -64,10 +64,10 @@ public class HomeController {
 
 		if (user.getPassword().equals(pwd)) {// comprobamos que, exisitendo el login, el pwd es correcto
 			if (user.isAdmin()) {// si es admin, vamos a su pagina
-				return "redirect:admin";
+				return "redirect:admin?login=" + login;
 			} else {// si es un user normal, a la que le corresponda
 				if (user.getStatus().equals(UserStatus.ENABLED)) {// si esta habilidado puede entrar
-					return "user";
+					return "redirect:user?login=" + login;
 				} else {// si no, no puede
 					return "login";
 				}
@@ -78,24 +78,31 @@ public class HomeController {
 	}
 
 	@GetMapping("/admin")
-	public String admin(Model modelo) {
+	public String admin(@RequestParam String login, Model modelo) {
 
 		List<UserVO> usuarios = su.findAll();
-		usuarios.remove(su.findByLogin("root"));
-		modelo.addAttribute("usuario", usuarios);
-
+		usuarios.remove(su.findByLogin(login));// para quitar el admin de la lista
+		modelo.addAttribute("usuarios", usuarios);
+		modelo.addAttribute("admin", su.findByLogin(login));// pasamos el objeto para modificar sus datos luego
 		return "admin";
 
 	}
 
+	@GetMapping("/user")
+	public String user(@RequestParam String login, Model modelo) {
+		UserVO user = su.findByLogin(login);
+		modelo.addAttribute("user", user);// pasamos el objeto para modificar sus datos luego
+		return "user";
+	}
+
 	@GetMapping("/deleteuser")
-	public String deleteUser(@RequestParam int iduser) {
+	public String deleteUser(@RequestParam String login, @RequestParam int iduser) {
 		su.eliminar(su.findById(iduser));
-		return "redirect:admin";
+		return "redirect:admin?login=" + login;
 	}
 
 	@GetMapping("/activeuser")
-	public String activeUser(@RequestParam int iduser) {
+	public String activeUser(@RequestParam String login, @RequestParam int iduser) {
 		UserVO user = su.findById(iduser);
 		if (user.getStatus() == UserStatus.DISABLED) {
 			user.setStatus(UserStatus.ENABLED);
@@ -103,12 +110,12 @@ public class HomeController {
 			user.setStatus(UserStatus.DISABLED);
 		}
 
-		return "redirect:admin";
+		return "redirect:admin?login=" + login;
 	}
 
 	@GetMapping("/insertauser")
 	public String insertaUser(Model modelo) {
-		modelo.addAttribute("usuario", new UserVO());
+		modelo.addAttribute("user", new UserVO());
 		return "registro";
 	}
 
@@ -119,22 +126,28 @@ public class HomeController {
 		user.setCategorias(new ArrayList<CategoryVO>());
 		user.setTareas(new ArrayList<TaskVO>());
 		su.insertar(user);
-		
+
 		return "redirect:/";
 
 	}
-	
+
 	@GetMapping("/modificadatos")
 	public String modificaDatos(@RequestParam int iduser, Model modelo) {
 		modelo.addAttribute("user", su.findById(iduser));
 		return "modificadatos";
 	}
-	
+
 	@PostMapping("/modificauser")
 	public String modificaUser(@ModelAttribute UserVO user, Model modelo) {
-		
-		su.modificar(user);
-		
+
+		UserVO user_mod = su.findById(user.getIduser());
+
+		user_mod.setLogin(user.getLogin());
+		user_mod.setPassword(user.getPassword());
+		user_mod.setEmail(user.getEmail());
+
+		su.modificar(user_mod);
+
 		return "redirect:/";
 
 	}

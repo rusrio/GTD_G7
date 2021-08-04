@@ -9,8 +9,15 @@
 <body>
 
 	<h1>SOY UN USER NORMALILLO</h1>
+	<p>
+		Mi login es <span th:text=${user.login}></span>
+	</p>
 	<div class="">
 		<a id="home" th:href="@{/}"> Logout</a>
+	</div>
+	<div class="">
+		<a id="home" th:href="@{modificadatos(iduser=${user.iduser})}">
+			Modifica tus datos personales</a>
 	</div>
 
 
