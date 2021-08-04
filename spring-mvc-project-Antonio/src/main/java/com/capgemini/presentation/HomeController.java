@@ -61,5 +61,11 @@ public class HomeController {
 		return "ppal";
 
 	}
+	
+	@GetMapping("/deleteuser")
+	public String deleteUser(@RequestParam int iduser) {
+		su.eliminar(su.findById(iduser));
+		return "redirect:ppal";
+	}
 
 }
