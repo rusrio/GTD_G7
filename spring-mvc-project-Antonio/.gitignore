@@ -1,2 +1,6 @@
 pom.xml
+<<<<<<< HEAD
 persistence.xml
+=======
+src/main/resources/META-INF/persistence.xml
+>>>>>>> 9182bd8505ddd2677acc256049e0ae660535252c
