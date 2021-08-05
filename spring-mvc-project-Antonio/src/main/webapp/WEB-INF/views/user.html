@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
-        <div class="titulo">Bienvenid@ ${usuario}</div>
+        <div class="titulo">Bienvenid@ <span th:text="${user.login}"></span></div>
         <a th:href="@{/}" class="btnLogout"href=""><div><i class="fas fa-sign-out-alt"></i></div></a>
         <div class="sidebar">
          <a th:href="/home.html"><div class="btnInicio"><i class="fas fa-home"></i></div></a>
