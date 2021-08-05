@@ -78,9 +78,7 @@ public class HomeController {
 
 	@GetMapping("/admin")
 	public String admin(Model modelo) {
-
 		modelo.addAttribute("usuario", su.findAll());
-
 		return "admin";
 
 	}
