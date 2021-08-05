@@ -8,12 +8,18 @@
 <link rel="stylesheet" href="/home.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    .mensaje {
+      color: red;
+    }
+  </style>
 </head>
 <body>
-	<div class="titulo">Bienvenid@, inicia sesión.</div>
+	<div class="titulo">Bienvenid@, inicia sesion.</div>
+	
+	<span class="mensaje" th:text=${mensaje}></span>
 
-
-	<form th:action="@{/validaUser}" method="post">
+	<form th:action="@{validaUser}" method="post">
 		<div>
 			<label> User Name : <input type="text" name="login" />
 			</label>

@@ -8,32 +8,22 @@
 <link rel="stylesheet" href="/home.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<style>
-.mensaje {
-	color: red;
-}
-</style>
 </head>
 <body>
-	<div class="titulo">Bienvenid@, crea tu cuenta.</div>
-	<form th:object="${user}" th:action="@{submituser}" method="post">
+	<form th:object="${categoria}"
+		th:action="@{submitcategoria(iduser=${user.iduser})}" method="post">
 		<fieldset>
-			<legend>Inserta tus datos</legend>
+			<legend>Inserta una nueva categoria</legend>
 			<p>
-				Login:<input type="text" th:field="*{login}" /><span
-					class="mensaje" th:text=${mensaje}></span>
-			</p>
-			<p>
-				Password:<input type="password" th:field="*{password}" />
-			</p>
-			<p>
-				Email:<input type="text" th:field="*{email}" />
+				Nombre de la categoria:<input type="text" th:field="*{name}" />
 			</p>
 			<p>
 				<input type="submit" value="Insertar">
 			</p>
 		</fieldset>
 	</form>
+	<div class="">
+		<a id="home" th:href="@{user(login=${user.login})}"> Home</a>
 	</div>
 </body>
 <script src="https://kit.fontawesome.com/374cf93979.js"
