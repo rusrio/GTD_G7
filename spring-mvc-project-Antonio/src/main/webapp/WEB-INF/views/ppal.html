@@ -3,8 +3,7 @@
 <head>
 <title>Usuarios</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" type="text/css" media="all"
-	href="../../../css/gtvg.css" th:href="@{/css/gtvg.css}" />
+
 </head>
 
 <body>
@@ -16,13 +15,21 @@
 			<th>login</th>
 			<th>email</th>
 			<th>status</th>
+			<th colspan="2">Acción</th>
 		</tr>
 		<tr th:each="u : ${usuario}">
 			<td th:text="${u.login}"></td>
 			<td th:text="${u.email}"></td>
 			<td th:text="${u.status}"></td>
+			<td><a th:href="@{deleteuser(iduser=${u.iduser})}">Eliminar</a></td>
+			<td><a th:href="@{activeuser(iduser=${u.iduser})}">Activar / Bloquear</a></td>
 		</tr>
 	</table>
+	<br>
+
+	<div class="">
+		<a id="home" th:href="@{/}"> Logout</a>
+	</div>
 </body>
 
 </html>

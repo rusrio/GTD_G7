@@ -1,18 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar sesión</title>
-    <link rel="stylesheet" href="/home.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iniciar sesion</title>
+<link rel="stylesheet" href="/home.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
-        <div class="titulo">Bienvenid@, inicia sesión.</div>
-         
-    </div>
+	<div class="titulo">Bienvenid@, inicia sesión.</div>
+
+
+	<form th:action="@{/validaUser}" method="post">
+		<div>
+			<label> User Name : <input type="text" name="login" />
+			</label>
+		</div>
+		<div>
+			<label> Password: <input type="password" name="pwd" />
+			</label>
+		</div>
+		<div>
+			<input type="submit" value="Accede" />
+		</div>
+	</form>
+	<div class="">
+		<a id="home" th:href="@{insertauser}"> Registrate</a>
+	</div>
+
 </body>
-<script src="https://kit.fontawesome.com/374cf93979.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/374cf93979.js"
+	crossorigin="anonymous"></script>
 </html>

@@ -6,15 +6,15 @@ version="2.0">
 <persistence-unit name="jpa">
 <properties>
 <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/taskmanager?serverTimezone=Europe/Madrid" />
+<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/taskmanagerapp?serverTimezone=Europe/Madrid" />
 <property name="javax.persistence.jdbc.user" value="root" />
-<property name="javax.persistence.jdbc.password" value="capgemini" />
+<property name="javax.persistence.jdbc.password" value="admin" />
 <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL57Dialect" />
 <property name="hibernate.show_sql" value="false" />
 <property name="javax.persistence.schema-generation.database.action"
-value="drop-and-create"/>
-<!-- <property name="javax.persistence.sql-load-script-source"
-value="META-INF/data.sql" /> por si queremos añadir datos al crear las tablas-->
+value="create"/>
+<!-- <property name="javax.persistence.sql-load-script-source" -->
+<!-- value="META-INF/data.sql" />  -->
 </properties>
 </persistence-unit>
 </persistence>

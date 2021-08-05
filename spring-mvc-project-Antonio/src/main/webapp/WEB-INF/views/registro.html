@@ -1,21 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
-    <link rel="stylesheet" href="/home.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registro</title>
+<link rel="stylesheet" href="/home.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
-    <div class="titulo">Bienvenid@, crea tu cuenta.</div>
-        <form action="/submitRegistro">
-        <input type="text">
-        <input type="text">
-    </form>
-    </div>
+	<div class="titulo">Bienvenid@, crea tu cuenta.</div>
+	<form th:object="${usuario}" th:action="@{submituser}" method="post">
+		<fieldset>
+			<legend>Inserta tus datos</legend>
+			<p>
+				Login:<input type="text" th:field="*{login}" />
+			</p>
+			<p>
+				Password:<input type="password" th:field="*{password}" />
+			</p>
+			<p>
+				Email:<input type="text" th:field="*{email}" />
+			</p>
+			<p>
+				<input type="submit" value="Insertar">
+			</p>
+		</fieldset>
+	</form>
+	</div>
 </body>
-<script src="https://kit.fontawesome.com/374cf93979.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/374cf93979.js"
+	crossorigin="anonymous"></script>
 </html>
