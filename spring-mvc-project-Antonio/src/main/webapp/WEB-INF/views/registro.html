@@ -20,23 +20,27 @@
 		<fieldset>
 			<legend>Inserta tus datos</legend>
 			<p>
-				Login:<input type="text" th:field="*{login}" /><span
-					class="mensaje" th:text=${mensaje}></span>
+				<input type="text" th:field="*{login}" placeholder="Introduce tu Login" />
 			</p>
 			<p>
-				Password:<input type="password" th:field="*{password}" />
+				<input type="password" th:field="*{password}" placeholder="Introduce tu password" />
 			</p>
 			<p>
-				Email:<input type="text" th:field="*{email}" />
+				<input type="password" th:field="*{password2}" placeholder="Confirma tu password" />
+			</p>
+			<p>
+				<input type="email" th:field="*{email}" placeholder="Introduce tu email" />
 			</p>
 			<p>
 				<input type="submit" value="Insertar">
 			</p>
+			<span
+					class="mensaje" th:text=${mensaje}></span>
 		</fieldset>
 	</form>
 	<div class="">
 		<a id="home" th:href="@{/}">Pagina de login</a>
-	</div>
+	</div>	
 </body>
 <script src="https://kit.fontawesome.com/374cf93979.js"
 	crossorigin="anonymous"></script>

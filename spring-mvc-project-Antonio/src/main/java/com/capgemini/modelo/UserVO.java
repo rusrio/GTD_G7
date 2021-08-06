@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Type;
 
@@ -35,6 +36,8 @@ public class UserVO {
 	@Column(unique = true)
 	private String login;
 	private String password;
+	@Transient
+	private String password2;
 	@Enumerated(EnumType.STRING)
 	private UserStatus status;
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
@@ -177,6 +180,20 @@ public class UserVO {
 				+ ", password=" + password + ", status=" + status + ", categorias=" + categorias + ", tareas=" + tareas
 				+ "]";
 	}
+
+
+
+	public String getPassword2() {
+		return password2;
+	}
+
+
+
+	public void setPassword2(String password2) {
+		this.password2 = password2;
+	}
+	
+	
 
 	
 
