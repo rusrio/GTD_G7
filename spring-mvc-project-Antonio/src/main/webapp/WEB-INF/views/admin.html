@@ -35,7 +35,7 @@ th, td {
 			<td th:text="${u.email}"></td>
 			<td th:text="${u.status}"></td>
 			<td><a
-				onclick="return confirm('Seguro que deseas eliminar este usuario?');"
+				onclick="return confirm('Seguro que deseas eliminar este usuario? Se eliminaran sus tareas y sus listas');"
 				th:href="@{deleteuser(iduser=${u.iduser},login=${admin.login})}">DELETE</a></td>
 			<td><a
 				th:href="@{activeuser(iduser=${u.iduser},login=${admin.login})}">SWITCH STATUS</a></td>

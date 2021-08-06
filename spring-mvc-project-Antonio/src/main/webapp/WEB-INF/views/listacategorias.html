@@ -32,7 +32,7 @@ th, td {
 		</tr>
 		<tr th:each="c : ${categorias}">
 			<td th:text="${c.name}"></td>
-			<td><a
+			<td><a onclick="return confirm('Seguro que deseas eliminar la categoria? Se eliminaran las tareas asociadas a ella');"
 				th:href="@{deletecategory(idcategory=${c.idcategory},iduser=${user.iduser})}">DELETE</a></td>
 			<td><a
 				th:href="@{modificacategoria(idcategory=${c.idcategory})}">MODIFY</a></td>
