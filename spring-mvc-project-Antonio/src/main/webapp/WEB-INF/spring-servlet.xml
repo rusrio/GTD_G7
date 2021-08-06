@@ -34,8 +34,7 @@
 	<!-- Enabling annotations for controller discovery -->
 	<mvc:annotation-driven />
 
-	<mvc:resources location="/resources/" mapping="/resources/**" />
-	<mvc:resources location="/resources/css/" mapping="/resources/css/**" />
+	<mvc:resources mapping="/css/**" location="/WEB-INF/resources/css/" />
 
 	<bean id="templateEngine"
 		class="org.thymeleaf.spring4.SpringTemplateEngine">
