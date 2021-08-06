@@ -1,0 +1,107 @@
+html{
+    height: 100%;
+}
+
+body{
+    background-color: rgb(68, 67, 67);
+    display: grid;
+    grid-template-columns: 20% auto;
+    grid-template-rows: 20% 60% 20%;
+    height: 100%;
+}
+
+.contenido{
+   height: 100%;
+   width: 100%;
+}
+
+.sidebar{    
+    display: grid;
+    grid-column: 1;
+    grid-row: 2;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content{
+    font-size: 4em;
+    grid-column: 2;
+    grid-row: 2;
+    color: white;
+    font-family: 'Roboto Mono', monospace;
+    margin-right: 3%;
+    border-radius: 4%;
+}
+
+.titulo{
+    grid-column: 2;
+    text-align: center;
+    font-family: 'Roboto Mono', monospace;
+    color: white;
+    align-self: center;
+    font-size: 3em;
+}
+
+.content{
+    border: 1px solid white;
+}
+
+.btnLogout{
+    color: white;
+    position: absolute;
+    right: 2px;
+    top: 0px;
+    font-size: 2.7em;
+    grid-column: 2;
+    text-align: end;
+    padding: 2%;
+}
+
+.btnInicio{
+
+}
+
+.btnInicio > i{
+    color: white;
+    grid-row-start: 2;
+}
+
+.btnUsuarios{
+
+}
+
+.btnUsuarios > i{
+    color: white;
+}
+
+.btnTareas{
+    grid-row-start: 2;
+}
+
+.btnTareas > i{
+    color: white;
+}
+
+.sidebar{
+    font-size: 3.5em;
+}
+
+i{
+    transition: 200ms;
+}
+
+i:hover{
+    cursor: pointer;
+    color: antiquewhite;
+    transition: 200ms;
+}
+
+.btnHome{
+
+}
+
+.btnTareas{
+
+}
+

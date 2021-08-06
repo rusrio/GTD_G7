@@ -34,6 +34,9 @@
 	<!-- Enabling annotations for controller discovery -->
 	<mvc:annotation-driven />
 
+	<mvc:resources location="/resources/" mapping="/resources/**" />
+	<mvc:resources location="/resources/css/" mapping="/resources/css/**" />
+
 	<bean id="templateEngine"
 		class="org.thymeleaf.spring4.SpringTemplateEngine">
 		<property name="templateResolver" ref="templateResolver" />
@@ -49,7 +52,7 @@
 		<property name="suffix" value=".html" />
 		<property name="templateMode" value="HTML5" />
 	</bean>
-	
+
 
 	<!-- Configuring views -->
 	<!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 

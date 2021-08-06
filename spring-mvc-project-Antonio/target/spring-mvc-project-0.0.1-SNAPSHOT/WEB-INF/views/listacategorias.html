@@ -1,0 +1,41 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Usuarios</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+
+<body>
+
+	<h1>
+		Categorias de <span th:text=${user.login}></span>
+	</h1>
+
+	<table>
+		<tr>
+			<th>nombre</th>
+			<th colspan="2">Accion</th>
+		</tr>
+		<tr th:each="c : ${categorias}">
+			<td th:text="${c.name}"></td>
+			<td><a
+				th:href="@{deletecategory(idcategory=${c.idcategory},iduser=${user.iduser})}">Eliminar</a></td>
+			<td><a th:href="@{modificacategoria(idcategory=${c.idcategory})}">Modificar</a></td>
+		</tr>
+	</table>
+	<br>
+	<div class="">
+		<a id="home" th:href="@{insertacategoria(iduser=${user.iduser})}">
+			Inserta una nueva categoria</a>
+	</div>
+	<div class="">
+		<a id="home" th:href="@{user(login=${user.login})}"> Home</a>
+	</div>
+	<div class="">
+		<a id="home" th:href="@{/}"> Logout</a>
+	</div>
+
+</body>
+
+</html>
