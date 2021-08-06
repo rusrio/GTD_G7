@@ -203,6 +203,8 @@ public class HomeController {
 	 * Si los datos son correctos, hacemos setters a los valores por defecto que
 	 * tendrá el usuario, y persistimos
 	 * 
+	 * También añadimos la categoria especial inbox, asociada a ese usuario
+	 * 
 	 * Devolvmos la página de login con un mensaje para que prueba sus nuevas
 	 * credenciales
 	 */
@@ -232,6 +234,13 @@ public class HomeController {
 		user.setTareas(new ArrayList<TaskVO>());
 
 		su.insertar(user);
+		
+		CategoryVO category = new CategoryVO();
+		category.setName("INBOX");
+		category.setUser(user);
+		category.setTareas(new ArrayList<TaskVO>());
+		
+		sc.insertar(category);
 
 		mensaje = "Prueba tus nuevas credenciales";
 		modelo.addAttribute("mensaje", mensaje);

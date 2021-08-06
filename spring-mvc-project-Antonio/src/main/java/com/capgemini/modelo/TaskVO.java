@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name="tareas")
 public class TaskVO {
@@ -23,8 +25,11 @@ public class TaskVO {
 	@Column(nullable = false)
 	private String title;
 	private String comments;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate created;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate planned;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate finished;
 	@ManyToOne
 	@JoinColumn(name="iduser")
