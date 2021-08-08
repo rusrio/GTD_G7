@@ -154,7 +154,7 @@ public class HomeController {
 	}
 	
 	@PostMapping("/submittask")
-	public String submitTask(@ModelAttribute TaskVO task, @RequestParam int iduser, Model modelo) {
+	public String submitTask(@ModelAttribute TaskVO task, @RequestParam String login, Model modelo) {
 		//Para insertar la tarea se pasará el login del usuario para mostrarlo a través de un input hidden en la vista html.
 		UserVO user = su.findByLogin(login);
 		task.setUser(user); // Seteamos al usuario de la tarea al usuario logeado.
