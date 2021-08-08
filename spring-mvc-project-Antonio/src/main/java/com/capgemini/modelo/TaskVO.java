@@ -25,9 +25,11 @@ public class TaskVO {
 	@Column(nullable = false)
 	private String title;
 	private String comments;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate created;
-	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate planned;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate finished;
 	@ManyToOne
 	@JoinColumn(name="iduser")

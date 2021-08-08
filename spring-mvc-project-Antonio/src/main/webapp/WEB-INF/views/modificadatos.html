@@ -8,7 +8,11 @@
 	<form th:object="${user}" th:action="@{modificauser}" method="post">
 		<fieldset>
 			<legend>Modifica tus datos</legend>
+<<<<<<< HEAD
 				<input type="hidden" th:field="*{iduser}" />
+=======
+			<input type="hidden" th:field="*{iduser}" />
+>>>>>>> feature-categories
 			<p>
 				Login:<input type="text" th:field="*{login}" />
 			</p>
@@ -16,14 +20,22 @@
 				Pasword:<input type="password" th:field="*{password}" />
 			</p>
 			<p>
+<<<<<<< HEAD
 				Email:<input type="text" th:field="*{email}" />
+=======
+				Email:<input type="email" th:field="*{email}" />
+>>>>>>> feature-categories
 			</p>
 			<p>
 				<input type="submit" value="Modificar">
 			</p>
 		</fieldset>
 	</form>
+<<<<<<< HEAD
 		<div class="">
+=======
+	<div class="">
+>>>>>>> feature-categories
 		<a id="home" th:href="@{/}"> Logout</a>
 	</div>
 </body>

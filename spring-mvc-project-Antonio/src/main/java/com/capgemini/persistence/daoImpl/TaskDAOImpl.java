@@ -46,10 +46,12 @@ public class TaskDAOImpl implements TaskDAO {
 	public int modificar(TaskVO task) {
 		try {
 			em.getTransaction().begin();
+			
 			//antes de modificar la tarea, buscamos la posicion en la listas de usuario y categoria
 			UserVO user= task.getUser();
 			List<TaskVO> tasks_user=user.getTareas();
 			int posicion_user = tasks_user.indexOf(task);
+			
 			CategoryVO category = task.getCategory();
 			List<TaskVO> tasks_category = category.getTareas();
 			int posicion_category=tasks_category.indexOf(task);
@@ -59,6 +61,7 @@ public class TaskDAOImpl implements TaskDAO {
 			//y ahora actuliazamos en ambas
 			tasks_user.set(posicion_user, task);
 			tasks_category.set(posicion_category, task);
+			
 			em.getTransaction().commit();
 			return 1;
 		} catch (Exception e) {

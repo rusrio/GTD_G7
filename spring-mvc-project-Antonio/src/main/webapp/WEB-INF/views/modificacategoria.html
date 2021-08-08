@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<form th:object="${category}" th:action="@{modifycategory}" method="post">
+		<fieldset>
+			<legend>Modifica la categoria</legend>
+				<input type="hidden" th:field="*{idcategory}" />
+			<p>
+				Nombre:<input type="text" th:field="*{name}" />
+			</p>
+			<p>
+				<input type="submit" value="Modificar">
+			</p>
+		</fieldset>
+	</form>
+	<div class="">
+		<a id="home" th:href="@{user(login=${user.login})}"> Home</a>
+	</div>
+</body>
+</html>

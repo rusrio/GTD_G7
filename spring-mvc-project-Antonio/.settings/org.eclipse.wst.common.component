@@ -1,29 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+<<<<<<< HEAD
                     
+=======
+                        
+    
+>>>>>>> feature-categories
     
     
     
     <wb-module deploy-name="spring-mvc-project-0.0.1-SNAPSHOT">
+<<<<<<< HEAD
                                         
+=======
+                                                
+        
+>>>>>>> feature-categories
         
         
         
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+<<<<<<< HEAD
                                         
+=======
+                                                
+        
+>>>>>>> feature-categories
         
         
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+<<<<<<< HEAD
                                         
+=======
+                                                
+        
+>>>>>>> feature-categories
         
         
         
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+<<<<<<< HEAD
                                         
+=======
+                                                
+        
+>>>>>>> feature-categories
         
         
         
         <wb-resource deploy-path="/" source-path="/WebContent"/>
+<<<<<<< HEAD
                                 
         
         
@@ -32,21 +58,45 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/target/generated-sources/annotations"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/target/generated-test-sources/test-annotations"/>
                                         
-        
-        
-        
-        <property name="context-root" value="spring-mvc-project"/>
+=======
                                         
         
         
         
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+                                                
+        
+>>>>>>> feature-categories
+        
+        
+        
+        <property name="context-root" value="spring-mvc-project"/>
+<<<<<<< HEAD
+                                        
+=======
+                                                
+        
+>>>>>>> feature-categories
+        
+        
+        
         <property name="java-output-path" value="/spring-mvc-project/build/classes"/>
+<<<<<<< HEAD
                                     
+=======
+                                            
+    
+>>>>>>> feature-categories
     
     
     
     </wb-module>
+<<<<<<< HEAD
                 
+=======
+                    
+
+>>>>>>> feature-categories
 
 
 
