@@ -41,6 +41,23 @@ public class ServicioTaskImpl implements ServicioTask {
 	public List<TaskVO> findAll() {
 		return td.findAll();
 	}
+
+	@Override
+	public List<TaskVO> findAllTareasInboxByIduser(int iduser) {
+		return td.findAllTaskInboxByIdUser(iduser);
+	}
+	
+
+	@Override
+	public List<TaskVO> findAllTareasTodayByIduser(int iduser) {
+		return td.findAllTaskTodayByIdUser(iduser);
+	}
+	
+
+	@Override
+	public List<TaskVO> findAllTareasWeeklyByIduser(int iduser) {
+		return td.findAllTaskWeeklyByIdUser(iduser);
+	}
 	
 	
 	

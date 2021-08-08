@@ -11,5 +11,7 @@ public interface TaskDAO {
 	int eliminar (TaskVO task);
 	TaskVO findById (int idtask);
 	List<TaskVO> findAll();
-
+	List<TaskVO> findAllTaskInboxByIdUser(int iduser);
+	List<TaskVO> findAllTaskTodayByIdUser(int iduser);
+	List<TaskVO> findAllTaskWeeklyByIdUser(int iduser);
 }

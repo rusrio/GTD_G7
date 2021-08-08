@@ -16,4 +16,10 @@ public interface ServicioTask {
 
 	List<TaskVO> findAll();
 
+	List<TaskVO> findAllTareasInboxByIduser(int iduser);
+
+	List<TaskVO> findAllTareasTodayByIduser(int iduser);
+
+	List<TaskVO> findAllTareasWeeklyByIduser(int iduser);
+
 }

@@ -18,6 +18,7 @@ public class TaskDAOImpl implements TaskDAO {
 		this.em = em;
 	}
 
+	/**Método que inserta una tarea.*/
 	public int insertar(TaskVO task) {
 
 		try {
@@ -41,7 +42,7 @@ public class TaskDAOImpl implements TaskDAO {
 
 	}
 
-	
+	/**Método que modifica una tarea pasada por parámetro.*/
 	public int modificar(TaskVO task) {
 		try {
 			em.getTransaction().begin();
@@ -52,6 +53,9 @@ public class TaskDAOImpl implements TaskDAO {
 			CategoryVO category = task.getCategory();
 			List<TaskVO> tasks_category = category.getTareas();
 			int posicion_category=tasks_category.indexOf(task);
+			
+			em.merge(task);
+			
 			//y ahora actuliazamos en ambas
 			tasks_user.set(posicion_user, task);
 			tasks_category.set(posicion_category, task);
@@ -65,7 +69,7 @@ public class TaskDAOImpl implements TaskDAO {
 		
 	}
 
-	
+	/**Método que elimina una tarea pasada por parámetro.*/
 	public int eliminar(TaskVO task) {
 		try {
 			em.getTransaction().begin();
@@ -88,7 +92,7 @@ public class TaskDAOImpl implements TaskDAO {
 		}
 	}
 
-	
+	/**Método que consulta una tarea cuya id se pasa por parámetro.*/
 	public TaskVO findById(int idtask) {
 		try {
 			Query consulta = em.createQuery("selec t from TaskVO t where idtask=:idtask");
@@ -101,7 +105,7 @@ public class TaskDAOImpl implements TaskDAO {
 		}
 	}
 
-	
+	/**Método que consulta todas las tareas.*/
 	public List<TaskVO> findAll() {
 		try {
 			Query consulta = em.createQuery("select t from TaskVO t");
@@ -112,5 +116,42 @@ public class TaskDAOImpl implements TaskDAO {
 			return null;
 		}
 	}
+	
+	/**Método que consulta todas las tareas de un usuario cuya id se pasa por parámetro.*/
+	public List<TaskVO> findAllTaskInboxByIdUser(int iduser) {
+		try {
+			Query consulta = em.createQuery("select t from TaskVO t where iduser=:iduser");
+			List<TaskVO> tasks = consulta.getResultList();
+			return tasks;
+		} catch (Exception e) {
+			System.out.println("Error al buscar todas las tareas " + e.getMessage());
+			return null;
+		}
+	}
+	
+	/**Método que consulta todas las tareas de un usuario cuya id se pasa por parámetro.*/
+	public List<TaskVO> findAllTaskTodayByIdUser(int iduser) {
+		try {
+			Query consulta = em.createQuery("select t from TaskVO t where iduser=:iduser and planned >= cast(dateadd(d, -1, getdate()) as fechaTaskToday)"); //Consulta para seleccionar aquellas task cuya fecha de entrega, especificada en "planned" es igual o inferior a 1 días.
+			List<TaskVO> tasks = consulta.getResultList();
+			return tasks;
+		} catch (Exception e) {
+			System.out.println("Error al buscar todas las tareas " + e.getMessage());
+			return null;
+		}
+	}
+	
+	/**Método que consulta todas las tareas de un usuario cuya id se pasa por parámetro.*/
+	public List<TaskVO> findAllTaskWeeklyByIdUser(int iduser) {
+		try {
+			Query consulta = em.createQuery("select t from TaskVO t where iduser=:iduser and planned >= cast(dateadd(d, -7, getdate()) as fechaTaskWeekly)"); //Consulta para seleccionar aquellas task cuya fecha de entrega, especificada en "planned" es igual o inferior a 7 días.
+			List<TaskVO> tasks = consulta.getResultList();
+			return tasks;
+		} catch (Exception e) {
+			System.out.println("Error al buscar todas las tareas " + e.getMessage());
+			return null;
+		}
+	}
+
 
 }

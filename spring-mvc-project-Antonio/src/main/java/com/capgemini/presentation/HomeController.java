@@ -1,5 +1,6 @@
 package com.capgemini.presentation;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,9 +9,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.capgemini.bussines.servicio.ServicioTask;
 import com.capgemini.bussines.servicio.ServicioUser;
+import com.capgemini.bussines.servicioImpl.ServicioTaskImpl;
 import com.capgemini.bussines.servicioImpl.ServicioUserImpl;
 import com.capgemini.modelo.CategoryVO;
 import com.capgemini.modelo.TaskVO;
@@ -21,6 +25,7 @@ import com.capgemini.modelo.UserVO.UserStatus;
 public class HomeController {
 
 	ServicioUser su = new ServicioUserImpl();
+	ServicioTask st = new ServicioTaskImpl();
 
 	// creamos un metodo para que nos cree al principio el usuario admin y algun
 	// otro usuario
@@ -91,9 +96,17 @@ public class HomeController {
 	@GetMapping("/user")
 	public String user(@RequestParam String login, Model modelo) {
 		UserVO user = su.findByLogin(login);
+		int iduser = user.getIduser();
+		List<TaskVO> inboxtasks = st.findAllTareasInboxByIduser(iduser); //Lista de tasks inbox, sin categoría.
+		List<TaskVO> todaytasks = st.findAllTareasTodayByIduser(iduser); //Lista de tasks para hoy.
+		List<TaskVO> weeklytasks = st.findAllTareasWeeklyByIduser(iduser); //Lista de tasks semanales.
+		modelo.addAttribute("tareas", inboxtasks);
+		modelo.addAttribute("tareas", todaytasks);
+		modelo.addAttribute("tareas", weeklytasks);
 		modelo.addAttribute("user", user);// pasamos el objeto para modificar sus datos luego
 		return "user";
 	}
+
 
 	@GetMapping("/deleteuser")
 	public String deleteUser(@RequestParam String login, @RequestParam int iduser) {
@@ -118,6 +131,16 @@ public class HomeController {
 		modelo.addAttribute("user", new UserVO());
 		return "registro";
 	}
+	
+	@GetMapping("/insertarTask")
+	public String insertaTask(Model modelo, @RequestParam String login) {
+		TaskVO tarea = new TaskVO();
+		UserVO user = new UserVO();
+		UserVO usuariologeado = su.findByLogin(login);
+		modelo.addAttribute("task", tarea);
+		modelo.addAttribute("user", usuariologeado);
+		return "insertartask";
+	}
 
 	@PostMapping("/submituser")
 	public String submitUser(@ModelAttribute UserVO user, Model modelo) {
@@ -127,6 +150,16 @@ public class HomeController {
 		user.setTareas(new ArrayList<TaskVO>());
 		su.insertar(user);
 
+		return "redirect:/";
+	}
+	
+	@PostMapping("/submittask")
+	public String submitTask(@ModelAttribute TaskVO task, @RequestParam int iduser, Model modelo) {
+		//Para insertar la tarea se pasará el login del usuario para mostrarlo a través de un input hidden en la vista html.
+		UserVO user = su.findByLogin(login);
+		task.setUser(user); // Seteamos al usuario de la tarea al usuario logeado.
+		task.setCreated(LocalDate.now()); // Seteamos la fecha de la tarea a la proporcionada por LocalDate.now();.
+		st.insertar(task);
 		return "redirect:/";
 
 	}

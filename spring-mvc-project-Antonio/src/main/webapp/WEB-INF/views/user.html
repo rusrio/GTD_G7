@@ -1,22 +1,128 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home | Inicio</title>
-    <link rel="stylesheet" href="/home.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>Usuarios</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
 </head>
+
 <body>
-        <div class="titulo">Bienvenid@ <span th:text="${user.login}"></span></div>
-        <a th:href="@{/}" class="btnLogout"href=""><div><i class="fas fa-sign-out-alt"></i></div></a>
-        <div class="sidebar">
-         <a th:href="/home.html"><div class="btnInicio"><i class="fas fa-home"></i></div></a>
-          <a th:href="/usuarios.html"> <div class="btnUsuarios"><i class="fas fa-user"></i></div></a> 
-           <a th:href="/tareas.html"> <div class="btnTareas"><i class="fas fa-tasks"></i></div></a>
-    </div>
+
+	<h1>SOY UN USER NORMALILLO</h1>
+	<p>
+		Mi login es <span th:text=${user.login}></span>
+	</p>
+	<div class="">
+		<a id="home" th:href="@{/}"> Logout</a>
+	</div>
+	<div class="">
+		<a id="home" th:href="@{modificadatos(iduser=${user.iduser})}">
+			Modifica tus datos personales</a>
+	</div>
+	<div class="insertar"><a id="insertarTask" th:href="@{/insertarTask(login=${user.login})}">Inserta una tarea.</a></div>
+	<div class="tablas">
+		<div class="inbox">
+			<table>
+				<tr>
+					<th>Inbox</th>
+				</tr>	
+				<tr>
+					<tbody>
+						<td>Tarea 1</td>
+						<td>Tarea 2</td>
+						<td>Tarea 3</td>
+					</tbody>
+				</tr>
+			</table>
+		</div>
+		<div class="daily">
+			<table>
+				<tr>
+					<th>Daily</th>
+					<tbody>
+						<td>Tarea 1</td>
+						<td>Tarea 2</td>
+						<td>Tarea 3</td>
+					</tbody>
+				</tr>
+			</table>
+		</div>
+		<div class="weekly">
+			<table>
+				<tr>
+					<th>Weekly</th>
+					<tbody>
+						<td>Tarea 1</td>
+						<td>Tarea 2</td>
+						<td>Tarea 3</td>
+					</tbody>
+				</tr>
+			</table>
+		</div>
+	</div>
 </body>
-<script src="https://kit.fontawesome.com/374cf93979.js" crossorigin="anonymous"></script>
+
+<!-- Estilos -->
+<style>
+
+.tablas{
+	display: grid;
+    align-items: center;
+    grid-template-columns: 20% 20% 20%;
+    justify-content: center;
+    align-content: center;
+	grid-gap: 2%;
+}
+
+
+/* Tabla INBOX*/
+.inbox{
+	border: 1px solid black;
+	display: flex;
+    justify-content: center;
+}
+
+.inbox>table{
+	display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+tr{
+	display: flex;
+	flex-direction: column;
+}
+
+/* */
+
+/* Tabla DAILY*/
+.daily{
+	border: 1px solid black;
+	display: flex;
+	justify-content: center;
+}
+
+.daily>table{
+	display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+/* */
+
+/* Tabla WEEKLY*/
+.weekly{
+	border: 1px solid black;
+	display: flex;
+	justify-content: center;
+}
+
+.weekly>table{
+	display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+/* */
+</style>
 </html>
