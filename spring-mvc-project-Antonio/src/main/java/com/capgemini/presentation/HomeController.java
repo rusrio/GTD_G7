@@ -160,7 +160,7 @@ public class HomeController {
 		task.setUser(user); // Seteamos al usuario de la tarea al usuario logeado.
 		task.setCreated(LocalDate.now()); // Seteamos la fecha de la tarea a la proporcionada por LocalDate.now();.
 		st.insertar(task);
-		return "redirect:/";
+		return "user?login="+login;
 
 	}
 

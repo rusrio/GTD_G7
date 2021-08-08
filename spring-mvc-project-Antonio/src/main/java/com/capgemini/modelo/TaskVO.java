@@ -26,7 +26,7 @@ public class TaskVO {
 	private String title;
 	private String comments;
 	private LocalDate created;
-	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate planned;
 	private LocalDate finished;
 	@ManyToOne
