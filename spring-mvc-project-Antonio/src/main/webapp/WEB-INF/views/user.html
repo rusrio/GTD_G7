@@ -160,30 +160,30 @@ table {
 	</h1>
 	<h2>Esta es tu lista de tareas</h2>
 	<div class="sidebar">
-		<a th:href="@{user(login=${user.login})}">
+		<a th:href="@{/}" title="Logout">
 			<div class="btnInicio">
-				<i class="fas fa-home"></i>
+				<i class="fas fa-sign-out-alt"></i>
 			</div>
-		</a> <a th:href="@{modificadatos(iduser=${user.iduser})}">
+		</a> <a th:href="@{modificadatos(iduser=${user.iduser})}"
+			title="Modifica tus datos">
 			<div class="btnUsuarios">
-				<i class="fas fa-user"></i>
+				<i class="fas fa-user-edit"></i>
 			</div>
-		</a> <a th:href="@{modificadatos(iduser=${user.iduser})}">
-			<div class="btnTareas">
-				<i class="fas fa-plus-square"></i>
-			</div>
-		</a>
-			</a> <a th:href="@{insertacategoria(iduser=${user.iduser})}">
+		</a> <a th:href="@{insertarTask(login=${user.login})}"
+			title="Inserta una tarea">
 			<div class="btnTareas">
 				<i class="fas fa-tasks"></i>
-			</div>
+			</div> <a th:href="@{listacategorias(iduser=${user.iduser})}"
+			title="Gestiona tus categorias">
+				<div class="btnTareas">
+					<i class="fas fa-arrow-circle-down"></i>
+				</div>
 		</a>
-		"
 	</div>
 	<div class="tablas">
 		<div class="inbox">
 			<table>
-			<th>INBOX</th>
+				<th>INBOX</th>
 				<tr th:each="task : ${tasksinbox}">
 					<td><p th:text="${task.title}"></p></td>
 				</tr>
@@ -191,7 +191,7 @@ table {
 		</div>
 		<div class="daily">
 			<table>
-			<th>DAILY</th>
+				<th>DAILY</th>
 				<tr th:each="task : ${tasksdaily}">
 					<td><p th:text="${task.title + task.planned}"></p></td>
 				</tr>
@@ -200,7 +200,7 @@ table {
 
 		<div class="weekly">
 			<table>
-			<th>WEEKLY</th>
+				<th>WEEKLY</th>
 				<tr th:each="task : ${tasksweekly}">
 					<td><p th:text="${task.title + task.planned"></p></td>
 				</tr>

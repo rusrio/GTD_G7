@@ -35,33 +35,33 @@ public class HomeController {
 	 * introducidos Solamente se ejecuta una vez, si el usuario admin no esta
 	 * creado, gracias al condicional if (su.findById(1) == null)
 	 */
-	public void inicio() {
-
-		if (su.findById(1) == null) {
-			su.insertar(new UserVO("root@capgemini.com", true, "root", "root", UserStatus.ENABLED,
-					new ArrayList<CategoryVO>(), new ArrayList<TaskVO>()));
-
-			su.insertar(new UserVO("usuario1@capgemini.com", false, "usuario1", "usuario1", UserStatus.ENABLED,
-					new ArrayList<CategoryVO>(), new ArrayList<TaskVO>()));
-
-			su.insertar(new UserVO("usuario2@capgemini.com", false, "usuario2", "usuario2", UserStatus.ENABLED,
-					new ArrayList<CategoryVO>(), new ArrayList<TaskVO>()));
-
-			su.insertar(new UserVO("usuario3@capgemini.com", false, "usuario3", "usuario3", UserStatus.DISABLED,
-					new ArrayList<CategoryVO>(), new ArrayList<TaskVO>()));
-
-			su.insertar(new UserVO("usuario4@capgemini.com", false, "usuario4", "usuario4", UserStatus.DISABLED,
-					new ArrayList<CategoryVO>(), new ArrayList<TaskVO>()));
-
-			sc.insertar(new CategoryVO("categoria1", su.findById(2), new ArrayList<TaskVO>()));
-			sc.insertar(new CategoryVO("categoria2", su.findById(2), new ArrayList<TaskVO>()));
-			sc.insertar(new CategoryVO("categoria3", su.findById(2), new ArrayList<TaskVO>()));
-			sc.insertar(new CategoryVO("categoria4", su.findById(2), new ArrayList<TaskVO>()));
-			sc.insertar(new CategoryVO("categoria5", su.findById(2), new ArrayList<TaskVO>()));
-			sc.insertar(new CategoryVO("categoria5", su.findById(2), new ArrayList<TaskVO>()));
-
-		}
-	}
+//	public void inicio() {
+//
+//		if (su.findById(1) == null) {
+//			su.insertar(new UserVO("root@capgemini.com", true, "root", "root", UserStatus.ENABLED,
+//					new ArrayList<CategoryVO>(), new ArrayList<TaskVO>()));
+//
+//			su.insertar(new UserVO("usuario1@capgemini.com", false, "usuario1", "usuario1", UserStatus.ENABLED,
+//					new ArrayList<CategoryVO>(), new ArrayList<TaskVO>()));
+//
+//			su.insertar(new UserVO("usuario2@capgemini.com", false, "usuario2", "usuario2", UserStatus.ENABLED,
+//					new ArrayList<CategoryVO>(), new ArrayList<TaskVO>()));
+//
+//			su.insertar(new UserVO("usuario3@capgemini.com", false, "usuario3", "usuario3", UserStatus.DISABLED,
+//					new ArrayList<CategoryVO>(), new ArrayList<TaskVO>()));
+//
+//			su.insertar(new UserVO("usuario4@capgemini.com", false, "usuario4", "usuario4", UserStatus.DISABLED,
+//					new ArrayList<CategoryVO>(), new ArrayList<TaskVO>()));
+//
+//			sc.insertar(new CategoryVO("categoria1", su.findById(2), new ArrayList<TaskVO>()));
+//			sc.insertar(new CategoryVO("categoria2", su.findById(2), new ArrayList<TaskVO>()));
+//			sc.insertar(new CategoryVO("categoria3", su.findById(2), new ArrayList<TaskVO>()));
+//			sc.insertar(new CategoryVO("categoria4", su.findById(2), new ArrayList<TaskVO>()));
+//			sc.insertar(new CategoryVO("categoria5", su.findById(2), new ArrayList<TaskVO>()));
+//			sc.insertar(new CategoryVO("categoria5", su.findById(2), new ArrayList<TaskVO>()));
+//
+//		}
+//	}
 
 	/**
 	 * Con este controlador, mostramos la página de login cuando accedemos al
@@ -70,7 +70,7 @@ public class HomeController {
 	@GetMapping("/")
 	public String login() {
 
-		inicio();
+//		inicio();
 
 		return "login";
 	}
@@ -149,8 +149,8 @@ public class HomeController {
 	@GetMapping("/user")
 	public String user(@RequestParam String login, Model modelo) {
 		UserVO user = su.findByLogin(login);
-		List<TaskVO> tasksinbox = st.findAllTareasInboxByIduser(user.getIduser(), 1);
-		List<TaskVO> tasksdaily = st.findAllTaskDateByIdUser(user.getIduser(), LocalDate.now().plusDays(1));
+		List<TaskVO> tasksinbox = st.findAllTareasInboxByIduser(user.getIduser(), sc.findById(1).getIdcategory());
+		List<TaskVO> tasksdaily = st.findAllTaskDateByIdUser(user.getIduser(), LocalDate.now());
 		List<TaskVO> tasksweekly = st.findAllTaskDateByIdUser(user.getIduser(), LocalDate.now().plusDays(7));
 		modelo.addAttribute("tasksinbox", tasksinbox);
 		modelo.addAttribute("tasksdaily", tasksdaily);

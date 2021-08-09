@@ -20,22 +20,17 @@
 			<td th:text="${u.login}"></td>
 			<td th:text="${u.email}"></td>
 			<td th:text="${u.status}"></td>
-			<td><a th:href="@{deleteuser(iduser=${u.iduser},login=${admin.login})}">Eliminar</a></td>
+			<td><a onclick="return confirm('Seguro que deseas eliminar este usuario? Se eliminaran sus tareas y sus listas');" th:href="@{deleteuser(iduser=${u.iduser},login=${admin.login})}">Eliminar</a></td>
 			<td><a th:href="@{activeuser(iduser=${u.iduser},login=${admin.login})}">Cambiar Status</a></td>
 		</tr>
 	</table>
 	<br>
 
 	<div class="sidebar">
-		<a href="/home.html">
-			<div class="btnInicio"><i class="fas fa-home"></i></div>
+		<a th:href="@{/}" alt="Logout">
+			<div class="btnInicio"> <i class="fas fa-sign-out-alt"></i></div>
 		</a>
-		<a href="/usuarios.html">
-			<div class="btnUsuarios"><i class="fas fa-user"></i></div>
-		</a>
-		<a href="/tareas.html">
-			<div class="btnTareas"><i class="fas fa-tasks"></i></div>
-		</a>
+
 	</div>
 		<style>
 		table {
