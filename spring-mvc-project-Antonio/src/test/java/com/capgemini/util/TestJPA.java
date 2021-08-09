@@ -176,7 +176,7 @@ class TestJPA {
 		System.out.println("[TEST 7]");
 		assertEquals("master_of_the_universe", su.findByLogin("master_of_the_universe").getLogin());
 		System.out.println(su.findByLogin("master_of_the_universe").getEmail());
-	}	
+	}
 	
 
 }

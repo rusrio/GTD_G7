@@ -287,19 +287,19 @@ public class HomeController {
 		//Para insertar la tarea se pasará el login del usuario para mostrarlo a través de un input hidden en la vista html.
 		UserVO user = su.findByLogin(login);
 		task.setUser(user); // Seteamos al usuario de la tarea al usuario logeado.
+		task.setCategory(sc.findById(task.getCategory().getIdcategory()));
 		task.setCreated(LocalDate.now()); // Seteamos la fecha de la tarea a la proporcionada por LocalDate.now();.
 		st.insertar(task);
-		return "user?login="+login;
+		return "redirect:user?login="+login;
 
 	}
 	
 	@GetMapping("/insertarTask")
 	public String insertaTask(Model modelo, @RequestParam String login) {
 		TaskVO tarea = new TaskVO();
-		UserVO user = new UserVO();
 		UserVO usuariologeado = su.findByLogin(login);
-		List<CategoryVO> categoriasUser = sc.findAllById(usuariologeado.getIduser());
-		modelo.addAttribute("categories", categoriasUser);
+//		List<CategoryVO> categoriasUser = sc.findAllById(usuariologeado.getIduser());
+		modelo.addAttribute("categories", usuariologeado.getCategorias());
 		modelo.addAttribute("task", tarea);
 		modelo.addAttribute("user", usuariologeado);
 		return "insertartask";
