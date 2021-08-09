@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registro</title>
+<link rel="stylesheet" href="/home.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<style>
+	form{
+	display: flex;
+	grid-column: 2;
+	grid-row: 2;
+	}
+
+	fieldset{
+		border: 2px groove black;
+		display: flex;
+		align-content: center;
+		
+	}
+
+</style>
+<body>
+	<form th:object="${categoria}"
+		th:action="@{submitcategoria(iduser=${user.iduser})}" method="post">
+		<fieldset>
+			<legend>Inserta una nueva categoria</legend>
+			<p>
+				Nombre de la categoria:<input type="text" th:field="*{name}" />
+			</p>
+			<p>
+				<input type="submit" value="Insertar">
+			</p>
+		</fieldset>
+	</form>
+	<div class="sidebar">
+        <a href="/home.html">
+            <div class="btnInicio"><i class="fas fa-home"></i></div>
+        </a>
+        <a href="/user.html">
+            <div class="btnUsuarios"><i class="fas fa-user"></i></div>
+        </a>
+        <a href="/tareas.html">
+            <div class="btnTareas"><i class="fas fa-tasks"></i></div>
+        </a>
+    </div>
+</body>
+<script src="https://kit.fontawesome.com/374cf93979.js"
+	crossorigin="anonymous"></script>
+</html>

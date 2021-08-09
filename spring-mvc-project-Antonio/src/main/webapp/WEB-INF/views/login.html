@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iniciar sesion</title>
+<link rel="stylesheet" type="text/css" media="all" href="../resources/css/login.css" th:href="@{/css/login.css}">
+</head>
+<style>
+	.titulo{
+	font-size: 2em;
+	text-align: center;
+	grid-row: 1;
+	grid-column: 1;
+	
+}
+.mensaje {
+	color: red;
+}
+
+fieldset{
+	border: none;
+	text-align: center;
+	align-self: center;
+}
+
+form{
+	grid-row: 2;
+	grid-column: 1;
+	display: flex;
+	justify-content: center;
+}
+
+.login{
+	text-align: center;
+	font-size: 1.1em;
+	font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+}
+
+legend{
+	font-size: 2em;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	color: white;
+}
+
+input{
+	background-color: rgba(233, 221, 221, 0.3);
+    
+    border: 2px solid black;
+}
+
+.submit{
+	background-color: black;
+	align-self: center;
+	transition: 100ms;
+}
+
+.submit:hover{
+	cursor: pointer;
+	transform: scale(1.1);
+	transition: 100ms;
+}
+</style>
+<body>
+
+	<h1>WELCOME TO TASK MANAGER G7</h1>
+	<h3>Por favor, inicia sesion</h3>
+	
+	
+
+	<form th:action="@{validauser}" method="post">
+		<span class="mensaje" th:text=${mensaje}></span>
+
+		<div>
+			<label> User Name : <input type="text" name="login" />
+			</label>
+		</div>
+		<div>
+			<label> Password: <input type="password" name="pwd" />
+			</label>
+		</div>
+		<div>
+			<input type="submit" value="Accede" />
+		</div>
+		<br>
+		<div class="">
+			<a class="btnInicio" th:href="@{insertauser}"> Registrate</a>
+		</div> 
+	</form>
+
+
+</body>
+</html>

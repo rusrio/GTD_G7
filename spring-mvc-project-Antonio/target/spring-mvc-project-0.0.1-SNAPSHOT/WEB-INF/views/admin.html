@@ -1,0 +1,187 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Usuarios</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style>
+		table {
+			width: 100%;
+			text-align: left;
+			border-collapse: collapse;
+			margin-block: 5%;
+			border: 3px solid black;
+			border-radius: 10%;
+			background-color: rgba(233, 221, 221, 0.3);
+
+		}
+
+		th,
+		td {
+			border: 1px solid black;
+			width: 20%;
+		}
+
+		h1 {
+			margin-block: 5%;
+			font-size: 3em;
+			text-align: center;
+			font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+		}
+
+		body {
+			background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+			background-size: 400% 400%;
+			animation: gradiente 35s ease infinite;
+			padding: 6%;
+		}
+
+		@keyframes gradiente {
+			0% {
+				background-position: 0% 50%;
+			}
+
+			50% {
+				background-position: 100% 50%;
+			}
+
+			100% {
+				background-position: 0% 50%;
+			}
+		}
+
+		th {
+			text-align: center;
+			text-transform: uppercase;
+			font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+		}
+
+		td {
+			font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+		}
+
+		a {
+			cursor: pointer;
+			transition: 200ms;
+			text-transform: uppercase;
+		}
+
+		a:hover {
+			color: red;
+			transition: 200ms;
+		}
+
+		.navegador {
+			display: flex;
+			align-items: flex-end;
+			justify-content: center;
+			flex-direction: column;
+
+		}
+
+		.navegador a {
+			text-transform: uppercase;
+			font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+			color: black;
+		}
+
+		.navegador a:hover {
+			border-bottom: 1px solid black;
+		}
+
+		.sidebar {
+			display: flex;
+			position: absolute;
+			right: 0;
+			left: 0;
+			top: 0%;
+			justify-content: space-evenly;
+		}
+
+		.btnLogout {
+			color: white;
+			position: absolute;
+			right: 1px;
+			font-size: 2.7em;
+			grid-column: 2;
+			text-align: end;
+			padding: 2%;
+		}
+
+		.btnInicio {}
+
+		.btnInicio>i {
+			color: white;
+			grid-row-start: 2;
+		}
+
+		.btnUsuarios {}
+
+		.btnUsuarios>i {
+			color: white;
+		}
+
+		.btnTareas {
+			grid-row-start: 2;
+		}
+
+		.btnTareas>i {
+			color: white;
+		}
+
+		.sidebar {
+			font-size: 3em;
+			padding: 2%;
+		}
+
+		i {
+			transition: 200ms;
+		}
+
+		i:hover {
+			cursor: pointer;
+			transform: scale(1.16);
+			transition: 200ms;
+		}
+
+		.btnHome {}
+
+		.btnTareas {}
+	</style>
+</head>
+
+<body>
+
+	<h1>User list</h1>
+
+	<table>
+		<tr>
+			<th>login</th>
+			<th>email</th>
+			<th>status</th>
+			<th colspan="2">Accion</th>
+		</tr>
+		<tr th:each="u : ${usuarios}">
+			<td th:text="${u.login}"></td>
+			<td th:text="${u.email}"></td>
+			<td th:text="${u.status}"></td>
+			<td><a th:href="@{deleteuser(iduser=${u.iduser},login=${admin.login})}">Eliminar</a></td>
+			<td><a th:href="@{activeuser(iduser=${u.iduser},login=${admin.login})}">Cambiar Status</a></td>
+		</tr>
+	</table>
+	<br>
+
+	<div class="sidebar">
+		<a href="/home.html">
+			<div class="btnInicio"><i class="fas fa-home"></i></div>
+		</a>
+		<a href="/usuarios.html">
+			<div class="btnUsuarios"><i class="fas fa-user"></i></div>
+		</a>
+		<a href="/tareas.html">
+			<div class="btnTareas"><i class="fas fa-tasks"></i></div>
+		</a>
+	</div>
+</body>
+<script src="https://kit.fontawesome.com/374cf93979.js" crossorigin="anonymous"></script>
+
+</html>

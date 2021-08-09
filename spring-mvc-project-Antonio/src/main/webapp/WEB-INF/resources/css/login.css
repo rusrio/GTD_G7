@@ -1,0 +1,87 @@
+form{
+    width: 70%;
+    margin: auto;
+}
+  /* Full-width inputs */
+  input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  /* Set a style for all buttons */
+  input[type=submit] {
+    background-color: #04AA6D;
+    color: white;
+    font-weight: normal;
+    font-size: 20px;
+    font-family: Arial;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  /* Add a hover effect for buttons */
+  input[type=submit]:hover {
+    opacity: 0.8;
+    
+  }
+  
+  /* Extra style for the cancel button (red) */
+  .btnInicio {
+    width: auto;
+    padding: 10px 15px;
+    background-color: #f44336;
+    
+  }
+  /* Add padding to containers */
+  .container {
+    padding: 16px;
+  }
+  
+  /* The "Forgot password" text */
+  span.mensaje {
+    font-family: arial; 
+    font-size: 18px; 
+    font-weight: 400; 
+    color: red;     
+    padding-top: 16px; 
+    text-align: center;     
+  }
+
+  h1 {
+    color: #1c7714;
+    text-align: center;
+    font-weight: normal;
+    font-size: 40px;
+    font-family: Arial;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    color: #443963;
+    text-align: center;
+    font-weight: normal;
+    font-size: 30px;
+    font-family: Arial;
+  }
+
+  label {
+    color: #443963;
+    font-weight: normal;
+    font-size: 15px;
+    font-family: Arial;
+  }
+
+  a{
+      color:white;
+      text-decoration: none;
+      font-weight: normal;
+      font-size: 15px;
+      font-family: Arial;
+  }

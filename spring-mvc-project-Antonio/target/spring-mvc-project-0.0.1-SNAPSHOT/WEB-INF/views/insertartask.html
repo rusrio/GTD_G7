@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insertar tarea</title>
+</head>
+
+<body>
+	<form th:object="${task}" th:action="@{submittask}" method="post">
+
+		<h1>Inserta una task</h1>
+		<input type="hidden" />
+		<p>
+			Titulo: <input type="text" name="title" id="title" />
+		</p>
+		<p>
+			Comentarios: <input type="text" name="comments" id="comments" />
+		</p>
+		<p>
+			Fecha prevista: <input type="date" name="planned" id="planned" />
+		<p>
+
+			<select th:field="*{idcategory}">
+				<option th:each="c : ${categories}" th:value="${c.idcategory}" th:text="${c.name}"></option>
+			</select> <input type="hidden" name="login" /> <input type="submit" value="Insertar tarea">
+		</p>
+	</form>
+	<div class="">
+		<a id="home" th:href="@{/logout}"> Logout</a>
+	</div>
+</body>
+
+</html>

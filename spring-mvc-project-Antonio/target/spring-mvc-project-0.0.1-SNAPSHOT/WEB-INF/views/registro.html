@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registro</title>
+<link rel="stylesheet" href="/registro.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+
+.titulo{
+	font-size: 2em;
+	text-align: center;
+	grid-row: 1;
+	grid-column: 1;
+	
+}
+.mensaje {
+	color: red;
+}
+
+fieldset{
+	border: none;
+	text-align: center;
+	align-self: center;
+}
+
+form{
+	grid-row: 2;
+	grid-column: 1;
+	display: flex;
+	justify-content: center;
+}
+
+.login{
+	text-align: center;
+	font-size: 1.1em;
+	font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+}
+
+legend{
+	font-size: 2em;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	color: white;
+}
+
+input{
+	background-color: rgba(233, 221, 221, 0.3);
+    color: white;
+    border: 2px solid black;
+}
+
+.submit{
+	background-color: black;
+	align-self: center;
+	transition: 100ms;
+}
+
+.submit:hover{
+	cursor: pointer;
+	transform: scale(1.1);
+	transition: 100ms;
+}
+
+
+
+</style>
+</head>
+<body>
+	<div class="titulo">Bienvenid@, crea tu cuenta.</div>
+	<form th:object="${user}" th:action="@{submituser}" method="post">
+		<fieldset>
+			<legend>Inserta tus datos</legend>
+			<p>
+				<input type="text" th:field="*{login}"
+					placeholder="Introduce tu Login" />
+			</p>
+			<p>
+				<input type="password" th:field="*{password}"
+					pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+					title="La contraseña debe tener al menos un numero, una letra miniscula, una letra mayuscula, y una longitud mínima de 8 carateres"
+					placeholder="Introduce tu password" />
+			</p>
+			<p>
+				<input type="password" th:field="*{password2}"
+					pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+					title="La contraseña debe tener al menos un numero, una letra miniscula, una letra mayuscula, y una longitud mínima de 8 carateres"
+					placeholder="Confirma tu password" />
+			</p>
+			<p>
+				<input type="email" th:field="*{email}"
+					placeholder="Introduce tu email" />
+			</p>
+			<p>
+				<input class="submit" type="submit" value="Insertar">
+			</p>
+			<span class="mensaje" th:text=${mensaje}></span>
+		</fieldset>
+	</form>
+	<div class="login">
+		<a id="home" th:href="@{/}">Ir a login</a>
+	</div>
+</body>
+<script src="https://kit.fontawesome.com/374cf93979.js"
+	crossorigin="anonymous"></script>
+</html>

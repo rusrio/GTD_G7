@@ -1,0 +1,97 @@
+html{
+    height: 100%;
+}
+
+body{
+    background-color: rgb(68, 67, 67);
+    display: grid;
+    grid-template-columns: 100%s;
+    grid-template-rows: 20% 60% 20%;
+    height: 100%;
+}
+
+.contenido{
+   height: 100%;
+   width: 100%;
+}
+
+.titulo{
+    font-size: 4em;
+    grid-column: 1;
+    grid-row: 1;
+    align-self: center;
+    text-align: center;
+    color: white;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.sidebar{    
+    display: grid;
+    grid-column: 1;
+    grid-row: 2;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btnLogout{
+    color: white;
+    position: absolute;
+    right: 1px;
+    font-size: 2.7em;
+    grid-column: 2;
+    text-align: end;
+    padding: 2%;
+}
+
+.btnInicio > i{
+    color: white;
+    grid-row-start: 2;
+}
+
+.btnUsuarios > i{
+    color: white;
+}
+
+.btnTareas{
+    grid-row-start: 2;
+}
+
+.btnTareas > i{
+    color: white;
+}
+
+.sidebar{
+    font-size: 3.5em;
+}
+
+i{
+    transition: 200ms;
+}
+
+i:hover{
+    cursor: pointer;
+    transform: scale(1.16);
+    transition: 200ms;
+}
+
+body {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradiente 35s ease infinite;
+    
+}
+
+@keyframes gradiente {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
