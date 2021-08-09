@@ -1,5 +1,6 @@
 package com.capgemini.bussines.servicioImpl;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.capgemini.bussines.servicio.ServicioTask;
@@ -43,20 +44,20 @@ public class ServicioTaskImpl implements ServicioTask {
 	}
 
 	@Override
-	public List<TaskVO> findAllTareasInboxByIduser(int iduser) {
-		return td.findAllTaskInboxByIdUser(iduser);
+	public List<TaskVO> findAllTareasInboxByIduser(int iduser, int idcategory) {
+		return td.findAllTaskInboxByIdUser(iduser,idcategory);
 	}
 	
 
 	@Override
-	public List<TaskVO> findAllTareasTodayByIduser(int iduser) {
-		return td.findAllTaskTodayByIdUser(iduser);
+	public List<TaskVO> findAllTareasTodayByIduser(int iduser, LocalDate fecha) {
+		return td.findAllTaskTodayByIdUser(iduser,fecha);
 	}
 	
 
 	@Override
-	public List<TaskVO> findAllTareasWeeklyByIduser(int iduser) {
-		return td.findAllTaskWeeklyByIdUser(iduser);
+	public List<TaskVO> findAllTareasWeeklyByIduser(int iduser, LocalDate fechaToday, LocalDate fechaWeek) {
+		return td.findAllTaskWeeklyByIdUser(iduser,fechaToday,fechaWeek);
 	}
 	
 	

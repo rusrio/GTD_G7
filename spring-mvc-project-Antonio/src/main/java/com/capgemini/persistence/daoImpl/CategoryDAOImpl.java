@@ -108,6 +108,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 	public List<CategoryVO> findAllById(int iduser) {
 		try {
 			Query consulta = em.createQuery("select c from CategoryVO c where iduser=:iduser");
+			consulta.setParameter("iduser", iduser);
 			List<CategoryVO> categories = consulta.getResultList();
 			return categories;
 		} catch (Exception e) {

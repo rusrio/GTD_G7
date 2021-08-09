@@ -1,8 +1,11 @@
 package com.capgemini.bussines.servicio;
 
+import java.time.LocalDate;
 import java.util.List;
 
+import com.capgemini.modelo.CategoryVO;
 import com.capgemini.modelo.TaskVO;
+import com.capgemini.modelo.UserVO;
 
 public interface ServicioTask {
 
@@ -16,10 +19,10 @@ public interface ServicioTask {
 
 	List<TaskVO> findAll();
 
-	List<TaskVO> findAllTareasInboxByIduser(int iduser);
+	List<TaskVO> findAllTareasInboxByIduser(int iduser, int idcategory);
 
-	List<TaskVO> findAllTareasTodayByIduser(int iduser);
+	List<TaskVO> findAllTareasTodayByIduser(int iduser, LocalDate fecha);
 
-	List<TaskVO> findAllTareasWeeklyByIduser(int iduser);
+	List<TaskVO> findAllTareasWeeklyByIduser(int iduser, LocalDate fechaToday, LocalDate fechaWeek);
 
 }
