@@ -70,7 +70,7 @@ public class HomeController {
 	@GetMapping("/")
 	public String login() {
 
-		inicio();
+//		inicio();
 
 		return "login";
 	}

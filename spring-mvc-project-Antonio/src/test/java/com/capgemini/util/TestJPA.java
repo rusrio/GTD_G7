@@ -181,11 +181,13 @@ class TestJPA {
 		assertEquals(1, st.insertar(new TaskVO("imprimir los documentos7", "lleva mucho tiempo7",
 				LocalDate.of(2020, 01, 01), LocalDate.of(2021, 8, 12), null, su.findById(2), sc.findById(1))));
 		
+		
+		
 		assertEquals(1, st.insertar(new TaskVO("imprimir los documentos8", "lleva mucho tiempo8",
-				LocalDate.of(2020, 01, 01), LocalDate.of(2021, 8, 13), null, su.findById(2), sc.findById(1))));
+				LocalDate.of(2020, 01, 01), LocalDate.of(2021, 8, 12), null, su.findById(2), sc.findById(1))));
 		
 		assertEquals(1, st.insertar(new TaskVO("imprimir los documentos9", "lleva mucho tiempo9",
-				LocalDate.of(2020, 01, 01), LocalDate.of(2021, 8, 15), null, su.findById(2), sc.findById(1))));
+				LocalDate.of(2020, 01, 01), LocalDate.of(2021, 8, 12), null, su.findById(2), sc.findById(1))));
 		
 		
 		assertEquals(1, st.insertar(new TaskVO("imprimir los documentos", "lleva mucho tiempo",
@@ -234,7 +236,7 @@ class TestJPA {
 			System.out.println(t.getComments());
 		}
 
-		assertEquals(4,
+		assertEquals(7,
 				st.findAllTareasInboxByIduser(su.findById(2).getIduser(), sc.findById(1).getIdcategory()).size());
 
 	}
@@ -244,21 +246,20 @@ class TestJPA {
 	@DisplayName("Buscar las planeadas para hoy y las atrasadas")
 	void testBuscarTaskToday() {
 		System.out.println("[TEST 10]");
-		List<TaskVO> tareas = st.findAllTareasTodayByIduser(su.findById(2).getIduser(), LocalDate.now());
+		List<TaskVO> tareas = st.findAllTaskDateByIdUser(su.findById(2).getIduser(), LocalDate.now());
 
 		for (TaskVO t : tareas) {
 			System.out.println(t.getComments());
 		}
-		assertEquals(2, st.findAllTareasTodayByIduser(su.findById(2).getIduser(), LocalDate.now()).size());
+		assertEquals(2, st.findAllTaskDateByIdUser(su.findById(2).getIduser(), LocalDate.now()).size());
 	}
 
 	@Test
 	@Order(11)
-	@DisplayName("Buscar las listas por semana y atrasadas")
+	@DisplayName("Buscar las listas por semana y las atrasadas")
 	void testBuscarTaskWee() {
-		System.out.println("[TEST 11]");
-		List<TaskVO> tareas = st.findAllTareasWeeklyByIduser(su.findById(2).getIduser(), LocalDate.now(),
-				LocalDate.of(2021, 8, 16));
+		System.out.println("[TEST 11]");;
+		List<TaskVO> tareas = st.findAllTaskDateByIdUser(su.findById(2).getIduser(), LocalDate.now().plusDays(7));
 		for (TaskVO t : tareas) {
 			System.out.println(t.getComments());
 		}

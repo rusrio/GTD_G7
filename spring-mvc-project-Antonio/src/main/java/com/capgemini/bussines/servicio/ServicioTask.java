@@ -21,7 +21,7 @@ public interface ServicioTask {
 
 	List<TaskVO> findAllTareasInboxByIduser(int iduser, int idcategory);
 
-	List<TaskVO> findAllTareasTodayByIduser(int iduser, LocalDate fecha);
+	List<TaskVO> findAllTaskDateByIdUser(int iduser, LocalDate fecha);
 
 	List<TaskVO> findAllTareasWeeklyByIduser(int iduser, LocalDate fechaToday, LocalDate fechaWeek);
 

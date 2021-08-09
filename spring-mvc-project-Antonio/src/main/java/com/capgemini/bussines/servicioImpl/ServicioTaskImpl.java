@@ -50,8 +50,8 @@ public class ServicioTaskImpl implements ServicioTask {
 	
 
 	@Override
-	public List<TaskVO> findAllTareasTodayByIduser(int iduser, LocalDate fecha) {
-		return td.findAllTaskTodayByIdUser(iduser,fecha);
+	public List<TaskVO> findAllTaskDateByIdUser(int iduser, LocalDate fecha) {
+		return td.findAllTaskDateByIdUser(iduser,fecha);
 	}
 	
 

@@ -141,12 +141,12 @@ public class TaskDAOImpl implements TaskDAO {
 	}
 
 	/**
-	 * Método que consulta todas las tareas de un usuario cuya id se pasa por
+	 * Método que consulta todas las tareas en una determinada de un usuario cuya id se pasa por
 	 * parámetro.
 	 */
-	public List<TaskVO> findAllTaskTodayByIdUser(int iduser, LocalDate fecha) {
+	public List<TaskVO> findAllTaskDateByIdUser(int iduser, LocalDate fecha) {
 		try {
-			Query consulta = em.createQuery("select t from TaskVO t where t.user.iduser=:iduser and planned <=: fecha and finished is null");
+			Query consulta = em.createQuery("select t from TaskVO t where t.user.iduser=:iduser and planned <= :fecha and finished is null");
 			consulta.setParameter("iduser", iduser);
 			consulta.setParameter("fecha", fecha);
 			List<TaskVO> tasks = consulta.getResultList();
@@ -161,12 +161,12 @@ public class TaskDAOImpl implements TaskDAO {
 	 * Método que consulta todas las tareas de un usuario cuya id se pasa por
 	 * parámetro.
 	 */
-	public List<TaskVO> findAllTaskWeeklyByIdUser(int iduser, LocalDate fechaToday, LocalDate fechaWeek) {
+	public List<TaskVO> findAllTaskWeeklyByIdUser(int iduser, LocalDate fecha1, LocalDate fecha2) {
 		try {
-			Query consulta = em.createQuery("select t from TaskVO t where t.user.iduser=:iduser and planned <=:fechatoday and planned <:fechaweek and finished is null");
+			Query consulta = em.createQuery("select t from TaskVO t where t.user.iduser=:iduser and t.planned <= :fecha2 and t.finished is null");
 			consulta.setParameter("iduser", iduser);
-			consulta.setParameter("fechatoday", fechaToday);
-			consulta.setParameter("fechaweek", fechaWeek);
+			consulta.setParameter("fecha1", fecha1);
+			consulta.setParameter("fecha2", fecha2);
 			List<TaskVO> tasks = consulta.getResultList();
 			return tasks;
 		} catch (Exception e) {
