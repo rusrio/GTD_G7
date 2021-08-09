@@ -50,14 +50,20 @@ public class ServicioTaskImpl implements ServicioTask {
 	
 
 	@Override
-	public List<TaskVO> findAllTareasTodayByIduser(int iduser, LocalDate fecha) {
-		return td.findAllTaskTodayByIdUser(iduser,fecha);
+	public List<TaskVO> findAllTaskDateByIdUser(int iduser, LocalDate fecha) {
+		return td.findAllTaskDateByIdUser(iduser,fecha);
 	}
 	
 
 	@Override
 	public List<TaskVO> findAllTareasWeeklyByIduser(int iduser, LocalDate fechaToday, LocalDate fechaWeek) {
 		return td.findAllTaskWeeklyByIdUser(iduser,fechaToday,fechaWeek);
+	}
+
+	@Override
+	public List<TaskVO> findAllTareasTodayByIduser(int iduser, LocalDate fecha) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

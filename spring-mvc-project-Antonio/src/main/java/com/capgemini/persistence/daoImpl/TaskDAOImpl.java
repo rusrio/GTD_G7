@@ -129,7 +129,8 @@ public class TaskDAOImpl implements TaskDAO {
 	 */
 	public List<TaskVO> findAllTaskInboxByIdUser(int iduser, int idcategory) {
 		try {
-			Query consulta = em.createQuery("select t from TaskVO t where t.user.iduser=:iduser and t.category.idcategory=:idcategory and finished is null");
+			Query consulta = em.createQuery(
+					"select t from TaskVO t where t.user.iduser=:iduser and t.category.idcategory=:idcategory and finished is null");
 			consulta.setParameter("iduser", iduser);
 			consulta.setParameter("idcategory", idcategory);
 			List<TaskVO> tasks = consulta.getResultList();
@@ -146,7 +147,8 @@ public class TaskDAOImpl implements TaskDAO {
 	 */
 	public List<TaskVO> findAllTaskTodayByIdUser(int iduser, LocalDate fecha) {
 		try {
-			Query consulta = em.createQuery("select t from TaskVO t where t.user.iduser=:iduser and planned <=: fecha and finished is null");
+			Query consulta = em.createQuery(
+					"select t from TaskVO t where t.user.iduser=:iduser and planned <=: fecha and finished is null");
 			consulta.setParameter("iduser", iduser);
 			consulta.setParameter("fecha", fecha);
 			List<TaskVO> tasks = consulta.getResultList();
@@ -163,10 +165,29 @@ public class TaskDAOImpl implements TaskDAO {
 	 */
 	public List<TaskVO> findAllTaskWeeklyByIdUser(int iduser, LocalDate fechaToday, LocalDate fechaWeek) {
 		try {
-			Query consulta = em.createQuery("select t from TaskVO t where t.user.iduser=:iduser and planned <=:fechatoday and planned <:fechaweek and finished is null");
+			Query consulta = em.createQuery(
+					"select t from TaskVO t where t.user.iduser=:iduser and planned <=:fechatoday and planned <:fechaweek and finished is null");
 			consulta.setParameter("iduser", iduser);
 			consulta.setParameter("fechatoday", fechaToday);
 			consulta.setParameter("fechaweek", fechaWeek);
+			List<TaskVO> tasks = consulta.getResultList();
+			return tasks;
+		} catch (Exception e) {
+			System.out.println("Error al buscar todas las tareas " + e.getMessage());
+			return null;
+		}
+	}
+
+	/**
+	 * Método que consulta todas las tareas en una determinada de un usuario cuya id
+	 * se pasa por parámetro.
+	 */
+	public List<TaskVO> findAllTaskDateByIdUser(int iduser, LocalDate fecha) {
+		try {
+			Query consulta = em.createQuery(
+					"select t from TaskVO t where t.user.iduser=:iduser and planned <= :fecha and finished is null");
+			consulta.setParameter("iduser", iduser);
+			consulta.setParameter("fecha", fecha);
 			List<TaskVO> tasks = consulta.getResultList();
 			return tasks;
 		} catch (Exception e) {

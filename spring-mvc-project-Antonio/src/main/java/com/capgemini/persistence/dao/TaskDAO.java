@@ -17,4 +17,5 @@ public interface TaskDAO {
 	List<TaskVO> findAllTaskInboxByIdUser(int iduser, int idcategory);
 	List<TaskVO> findAllTaskTodayByIdUser(int iduser, LocalDate fecha);
 	List<TaskVO> findAllTaskWeeklyByIdUser(int iduser, LocalDate fechaToday, LocalDate fechaWeek);
+	List<TaskVO> findAllTaskDateByIdUser(int iduser, LocalDate fecha);
 }

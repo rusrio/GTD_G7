@@ -1,12 +1,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>Usuarios</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Usuarios</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 </head>
 <style>
-	table {
+table {
 		width: 100%;
 		text-align: left;
 		border-collapse: collapse;
@@ -155,130 +155,125 @@
 </style>
 <body>
 
-	<h1>Hola <span th:text="${user.login}">Usuario</span></h1>
+	<h1>
+		Hola <span th:text="${user.login}">Usuario</span>
+	</h1>
 	<h2>Esta es tu lista de tareas</h2>
 	<div class="sidebar">
 		<a th:href="@{user(login=${user.login})}">
-			<div class="btnInicio"><i class="fas fa-home"></i></div>
+			<div class="btnInicio">
+				<i class="fas fa-home"></i>
+			</div>
+		</a> <a th:href="@{modificadatos(iduser=${user.iduser})}">
+			<div class="btnUsuarios">
+				<i class="fas fa-user"></i>
+			</div>
+		</a> <a th:href="@{modificadatos(iduser=${user.iduser})}">
+			<div class="btnTareas">
+				<i class="fas fa-plus-square"></i>
+			</div>
 		</a>
-		<a th:href="@{modificadatos(iduser=${user.iduser})}">
-			<div class="btnUsuarios"><i class="fas fa-user"></i></div>
+			</a> <a th:href="@{insertacategoria(iduser=${user.iduser})}">
+			<div class="btnTareas">
+				<i class="fas fa-tasks"></i>
+			</div>
 		</a>
-		<a href="/tareas.html">
-			<div class="btnTareas"><i class="fas fa-tasks"></i></div>
-		</a>
+		"
 	</div>
 	<div class="tablas">
 		<div class="inbox">
 			<table>
-				<tr>
-					<th>Inbox</th>
-				</tr>
-				<tr>
-					<tbody>
-						<td>Tarea 1</td>
-						<td>Tarea 2</td>
-						<td>Tarea 3</td>
-					</tbody>
+			<th>INBOX</th>
+				<tr th:each="task : ${tasksinbox}">
+					<td><p th:text="${task.title}"></p></td>
 				</tr>
 			</table>
 		</div>
 		<div class="daily">
 			<table>
-				<tr>
-					<th>Daily</th>
-					<tbody>
-						<td>Tarea 1</td>
-						<td>Tarea 2</td>
-						<td>Tarea 3</td>
-					</tbody>
+			<th>DAILY</th>
+				<tr th:each="task : ${tasksdaily}">
+					<td><p th:text="${task.title + task.planned}"></p></td>
 				</tr>
 			</table>
 		</div>
 
 		<div class="weekly">
 			<table>
-				<tr>
-					<th>Weekly</th>
-					<tbody>
-						<td>Tarea 1</td>
-						<td>Tarea 2</td>
-						<td>Tarea 3</td>
-					</tbody>
+			<th>WEEKLY</th>
+				<tr th:each="task : ${tasksweekly}">
+					<td><p th:text="${task.title + task.planned"></p></td>
 				</tr>
 			</table>
 		</div>
 	</div>
-	
-	<script src="https://kit.fontawesome.com/374cf93979.js" crossorigin="anonymous"></script>
+
+	<script src="https://kit.fontawesome.com/374cf93979.js"
+		crossorigin="anonymous"></script>
 </body>
 
 <!-- Estilos -->
 
 
 <style>
-	.tablas {
-		display: grid;
-		align-items: center;
-		grid-template-columns: 20% 20% 20%;
-		justify-content: center;
-		align-content: center;
-		grid-gap: 2%;
-		
-	}
+.tablas {
+	display: grid;
+	align-items: center;
+	grid-template-columns: 20% 20% 20%;
+	justify-content: center;
+	align-content: center;
+	grid-gap: 2%;
+}
 
+/* Tabla INBOX*/
+.inbox {
+	display: flex;
+	justify-content: center;
+}
 
-	/* Tabla INBOX*/
-	.inbox {
-		
-		display: flex;
-		justify-content: center;
-	}
+.inbox>table {
+	padding-bottom: 10%;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
 
-	.inbox>table {
-		padding-bottom: 10%;
-		display: flex;
-		align-items: center;
-		flex-direction: column;
-	}
+tr {
+	display: flex;
+	flex-direction: column;
+}
 
-	tr {
-		display: flex;
-		flex-direction: column;
-	}
+/* */
 
-	/* */
+/* Tabla DAILY*/
+.daily {
+	display: flex;
+	justify-content: center;
+}
 
-	/* Tabla DAILY*/
-	.daily {
-		display: flex;
-		justify-content: center;
-	}
+.daily>table {
+	padding-bottom: 10%;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
 
-	.daily>table {
-		padding-bottom: 10%;
-		display: flex;
-		align-items: center;
-		flex-direction: column;
-	}
+/* */
 
+/* Tabla WEEKLY*/
+.weekly {
+	display: flex;
+	justify-content: center;
+}
 
-	/* */
+.weekly>table {
+	padding-bottom: 10%;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
 
-	/* Tabla WEEKLY*/
-	.weekly {
-		display: flex;
-		justify-content: center;
-	}
-
-	.weekly>table {
-		padding-bottom: 10%;
-		display: flex;
-		align-items: center;
-		flex-direction: column;
-	}
-
-	/* */
+/* */
 </style>
 
 </html>

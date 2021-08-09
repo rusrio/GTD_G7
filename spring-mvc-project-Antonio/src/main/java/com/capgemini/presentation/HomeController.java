@@ -149,6 +149,12 @@ public class HomeController {
 	@GetMapping("/user")
 	public String user(@RequestParam String login, Model modelo) {
 		UserVO user = su.findByLogin(login);
+		List<TaskVO> tasksinbox = st.findAllTareasInboxByIduser(user.getIduser(), 1);
+		List<TaskVO> tasksdaily = st.findAllTaskDateByIdUser(user.getIduser(), LocalDate.now().plusDays(1));
+		List<TaskVO> tasksweekly = st.findAllTaskDateByIdUser(user.getIduser(), LocalDate.now().plusDays(7));
+		modelo.addAttribute("tasksinbox", tasksinbox);
+		modelo.addAttribute("tasksdaily", tasksdaily);
+		modelo.addAttribute("tasksweekly", tasksweekly);
 		modelo.addAttribute("user", user);
 		return "user";
 	}
