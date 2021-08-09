@@ -298,6 +298,8 @@ public class HomeController {
 		TaskVO tarea = new TaskVO();
 		UserVO user = new UserVO();
 		UserVO usuariologeado = su.findByLogin(login);
+		List<CategoryVO> categoriasUser = sc.findAllById(usuariologeado.getIduser());
+		modelo.addAttribute("categories", categoriasUser);
 		modelo.addAttribute("task", tarea);
 		modelo.addAttribute("user", usuariologeado);
 		return "insertartask";

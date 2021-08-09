@@ -103,5 +103,17 @@ public class CategoryDAOImpl implements CategoryDAO {
 			return null;
 		}
 	}
+	
+	/** Lista todas las categorías de un user */
+	public List<CategoryVO> findAllById(int iduser) {
+		try {
+			Query consulta = em.createQuery("select c from CategoryVO c where iduser=:iduser");
+			List<CategoryVO> categories = consulta.getResultList();
+			return categories;
+		} catch (Exception e) {
+			System.out.println("Error al buscar todas las categorias " + e.getMessage());
+			return null;
+		}
+	}
 
 }

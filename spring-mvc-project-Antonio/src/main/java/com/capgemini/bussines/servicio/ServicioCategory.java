@@ -13,6 +13,8 @@ public interface ServicioCategory {
 	int eliminar(CategoryVO category);
 
 	CategoryVO findById(int idcategory);
+	
+	List<CategoryVO> findAllById(int iduser);
 
 	List<CategoryVO> findAll();
 

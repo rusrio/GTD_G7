@@ -38,6 +38,10 @@ public class ServicioCategoryImpl implements ServicioCategory {
 		return cd.findAll();
 	}
 	
+	public List<CategoryVO> findAllById(int iduser) {
+		return cd.findAllById(iduser);
+	}
+	
 	
 
 }

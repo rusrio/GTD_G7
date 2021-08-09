@@ -11,5 +11,6 @@ public interface CategoryDAO {
 	int eliminar(CategoryVO category);
 	CategoryVO findById(int idcategory);
 	List<CategoryVO> findAll();
+	List<CategoryVO> findAllById(int iduser);
 
 }

@@ -18,8 +18,11 @@
 		<p>
 			Fecha prevista: <input type="date" name="planned" id="planned" />
 		<p>
-		<input type="hidden" th:value="${user.login}" name="login"/>
-			<input type="submit" value="Insertar tarea">
+
+			<select th:field="*{idcategory}">
+				<option th:each="category : ${categories}" th:value="${category.idcategory}" th:text="${category.name}"></option>
+			</select> <input type="hidden" th:value="${user.login}" name="login"/>
+			 <input type="submit" value="Insertar tarea">
 		</p>
 	</form>
 	<div class="">

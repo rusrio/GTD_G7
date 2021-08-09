@@ -19,6 +19,114 @@
 		<a id="home" th:href="@{modificadatos(iduser=${user.iduser})}">
 			Modifica tus datos personales</a>
 	</div>
+<<<<<<< HEAD
+	<div class="insertar"><a id="insertarTask" th:href="@{/insertarTask(login=${user.login})}">Inserta una tarea.</a></div>
+	<div class="tablas">
+		<div class="inbox">
+			<table>
+				<tr>
+					<th>Inbox</th>
+				</tr>	
+				<tr>
+					<tbody>
+						<td>Tarea 1</td>
+						<td>Tarea 2</td>
+						<td>Tarea 3</td>
+					</tbody>
+				</tr>
+			</table>
+		</div>
+		<div class="daily">
+			<table>
+				<tr>
+					<th>Daily</th>
+					<tbody>
+						<td>Tarea 1</td>
+						<td>Tarea 2</td>
+						<td>Tarea 3</td>
+					</tbody>
+				</tr>
+			</table>
+		</div>
+		<div class="weekly">
+			<table>
+				<tr>
+					<th>Weekly</th>
+					<tbody>
+						<td>Tarea 1</td>
+						<td>Tarea 2</td>
+						<td>Tarea 3</td>
+					</tbody>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+
+<!-- Estilos -->
+<style>
+
+.tablas{
+	display: grid;
+    align-items: center;
+    grid-template-columns: 20% 20% 20%;
+    justify-content: center;
+    align-content: center;
+	grid-gap: 2%;
+}
+
+
+/* Tabla INBOX*/
+.inbox{
+	border: 1px solid black;
+	display: flex;
+    justify-content: center;
+}
+
+.inbox>table{
+	display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+tr{
+	display: flex;
+	flex-direction: column;
+}
+
+/* */
+
+/* Tabla DAILY*/
+.daily{
+	border: 1px solid black;
+	display: flex;
+	justify-content: center;
+}
+
+.daily>table{
+	display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+/* */
+
+/* Tabla WEEKLY*/
+.weekly{
+	border: 1px solid black;
+	display: flex;
+	justify-content: center;
+}
+
+.weekly>table{
+	display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+/* */
+</style>
+=======
 		<div class="">
 		<a id="home" th:href="@{listacategorias(iduser=${user.iduser})}">
 			Gestiona tus categorias</a>
@@ -27,4 +135,5 @@
 
 </body>
 
+>>>>>>> feature-categories
 </html>
