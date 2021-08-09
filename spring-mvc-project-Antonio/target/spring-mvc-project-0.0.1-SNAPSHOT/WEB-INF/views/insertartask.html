@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>Insertar tarea</title>
+	<meta charset="UTF-8">
+	<title>Insertar tarea</title>
 </head>
+
 <body>
 	<form th:object="${task}" th:action="@{submittask}" method="post">
 
@@ -18,12 +20,15 @@
 		<p>
 			Fecha prevista: <input type="date" name="planned" id="planned" />
 		<p>
-		<input type="hidden" th:value="${user.login}" name="login"/>
-			<input type="submit" value="Insertar tarea">
+
+			<select th:field="*{idcategory}">
+				<option th:each="c : ${categories}" th:value="${c.idcategory}" th:text="${c.name}"></option>
+			</select> <input type="hidden" name="login" /> <input type="submit" value="Insertar tarea">
 		</p>
 	</form>
 	<div class="">
 		<a id="home" th:href="@{/logout}"> Logout</a>
 	</div>
 </body>
+
 </html>

@@ -9,6 +9,21 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
+<style>
+	form{
+	display: flex;
+	grid-column: 2;
+	grid-row: 2;
+	}
+
+	fieldset{
+		border: 2px groove black;
+		display: flex;
+		align-content: center;
+		
+	}
+
+</style>
 <body>
 	<form th:object="${categoria}"
 		th:action="@{submitcategoria(iduser=${user.iduser})}" method="post">
@@ -22,9 +37,17 @@
 			</p>
 		</fieldset>
 	</form>
-	<div class="">
-		<a id="home" th:href="@{user(login=${user.login})}"> Home</a>
-	</div>
+	<div class="sidebar">
+        <a href="/home.html">
+            <div class="btnInicio"><i class="fas fa-home"></i></div>
+        </a>
+        <a href="/user.html">
+            <div class="btnUsuarios"><i class="fas fa-user"></i></div>
+        </a>
+        <a href="/tareas.html">
+            <div class="btnTareas"><i class="fas fa-tasks"></i></div>
+        </a>
+    </div>
 </body>
 <script src="https://kit.fontawesome.com/374cf93979.js"
 	crossorigin="anonymous"></script>

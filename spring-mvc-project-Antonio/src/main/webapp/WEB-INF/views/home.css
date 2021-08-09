@@ -15,15 +15,6 @@ body{
    width: 100%;
 }
 
-.sidebar{    
-    display: grid;
-    grid-column: 1;
-    grid-row: 2;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-}
-
 .titulo{
     font-size: 4em;
     grid-column: 2;
@@ -32,6 +23,15 @@ body{
     text-align: center;
     color: white;
     font-family: 'Roboto Mono', monospace;
+}
+
+.sidebar{    
+    display: grid;
+    grid-column: 1;
+    grid-row: 2;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .btnLogout{
@@ -44,17 +44,9 @@ body{
     padding: 2%;
 }
 
-.btnInicio{
-
-}
-
 .btnInicio > i{
     color: white;
     grid-row-start: 2;
-}
-
-.btnUsuarios{
-
 }
 
 .btnUsuarios > i{
@@ -79,14 +71,27 @@ i{
 
 i:hover{
     cursor: pointer;
-    color: antiquewhite;
+    transform: scale(1.16);
     transition: 200ms;
 }
 
-.btnHome{
-
+body {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradiente 35s ease infinite;
+    
 }
 
-.btnTareas{
+@keyframes gradiente {
+    0% {
+        background-position: 0% 50%;
+    }
 
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }

@@ -1,3 +1,4 @@
+@charset "ISO-8859-1";
 html{
     height: 100%;
 }
@@ -15,16 +16,6 @@ body{
    width: 100%;
 }
 
-.titulo{
-    font-size: 4em;
-    grid-column: 2;
-    grid-row: 2;
-    align-self: center;
-    text-align: center;
-    color: white;
-    font-family: 'Roboto Mono', monospace;
-}
-
 .sidebar{    
     display: grid;
     grid-column: 1;
@@ -34,19 +25,51 @@ body{
     align-items: center;
 }
 
+.content{
+    font-size: 4em;
+    grid-column: 2;
+    grid-row: 2;
+    color: white;
+    font-family: 'Roboto Mono', monospace;
+    margin-right: 3%;
+    border-radius: 4%;
+}
+
+.titulo{
+    grid-column: 2;
+    text-align: center;
+    font-family: 'Roboto Mono', monospace;
+    color: white;
+    align-self: center;
+    font-size: 3em;
+}
+
+.content{
+    border: 1px solid white;
+}
+
 .btnLogout{
     color: white;
     position: absolute;
-    right: 1px;
+    right: 2px;
+    top: 0px;
     font-size: 2.7em;
     grid-column: 2;
     text-align: end;
     padding: 2%;
 }
 
+.btnInicio{
+
+}
+
 .btnInicio > i{
     color: white;
     grid-row-start: 2;
+}
+
+.btnUsuarios{
+
 }
 
 .btnUsuarios > i{
@@ -71,27 +94,15 @@ i{
 
 i:hover{
     cursor: pointer;
-    transform: scale(1.16);
+    color: antiquewhite;
     transition: 200ms;
 }
 
-body {
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 400% 400%;
-    animation: gradiente 35s ease infinite;
-    
+.btnHome{
+
 }
 
-@keyframes gradiente {
-    0% {
-        background-position: 0% 50%;
-    }
+.btnTareas{
 
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
 }
+
